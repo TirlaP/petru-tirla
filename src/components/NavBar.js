@@ -57,7 +57,7 @@ const NavBar = () => {
     const [mode, setMode] = useThemeSwitcher();
     const [isOpen, setIsOpen] = useState(false);
     const { language } = useLanguage();
-    const t = translations[language];
+    const t = translations[language].navigation;
 
     const handleClick = () => {
         setIsOpen(!isOpen);
@@ -86,9 +86,12 @@ const NavBar = () => {
             </button>
             <div className="w-full flex justify-between items-center lg:hidden">
                 <nav>
-                    <CustomLink href="/" title="Home" className="mr-4" />
-                    <CustomLink href="/about" title="About" className="mr-4" />
-                    <CustomLink href="/projects" title="Projects" className="mr-4" />
+                    <nav>
+                        <CustomLink href="/" title={t.home} className="mr-4" />
+                        <CustomLink href="/about" title={t.about} className="mr-4" />
+                        <CustomLink href="/projects" title={t.projects} className="mr-4" />
+                        <CustomLink href="/articles" title={t.articles} className="mr-4" />
+                    </nav>
                 </nav>
                 <nav className="flex items-center justify-center flex-wrap">
                     <motion.a
@@ -132,16 +135,27 @@ const NavBar = () => {
                     className="min-w-[70vw] flex flex-col justify-between z-30 items-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32"
                 >
                     <nav className="flex items-center flex-col justify-center">
-                        <CustomMobileLink href="/" title="Home" className="" toggle={handleClick} />
+                        <CustomMobileLink
+                            href="/"
+                            title={t.home}
+                            className=""
+                            toggle={handleClick}
+                        />
                         <CustomMobileLink
                             href="/about"
-                            title="About"
+                            title={t.about}
                             className=""
                             toggle={handleClick}
                         />
                         <CustomMobileLink
                             href="/projects"
-                            title="Projects"
+                            title={t.projects}
+                            className=""
+                            toggle={handleClick}
+                        />
+                        <CustomMobileLink
+                            href="/articles"
+                            title={t.articles}
                             className=""
                             toggle={handleClick}
                         />

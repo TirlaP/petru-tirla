@@ -12,11 +12,13 @@ import Technologies from "../components/Technologies";
 import TransitionEffect from "../components/TransitionEffect";
 
 const DisplayProjects = () => {
+    const { language } = useLanguage();
+    const t = translations[language].projects;
     const personalProjects = projects.personnalProjects;
     return personalProjects.map(function (project, index) {
         const title = project.name;
         const img = project.img;
-        const summary = project.summary;
+        const summary = project.summary[language];
         const link = project.live_demo_url;
         const github = project.gitHub_url;
         const technologies = project.technologies;
@@ -31,6 +33,7 @@ const DisplayProjects = () => {
                     link={link}
                     github={github}
                     technologies={technologies}
+                    liveDemo={t.liveDemo}
                 />
             );
         } else {
@@ -43,6 +46,7 @@ const DisplayProjects = () => {
                     link={link}
                     github={github}
                     technologies={technologies}
+                    liveDemo={t.liveDemo}
                 />
             );
         }

@@ -6,30 +6,30 @@ import LiIcon from "./LiIcon";
 import { projects } from "./data/Projects";
 
 const CollabDetails = ({ collaborations }) => {
+    const { language } = useLanguage();
     return collaborations.map((collab) => (
         <Details
             key={collab.company}
-            position={collab.position}
+            position={collab.position[language]}
             company={collab.company}
             companyLink={collab.companyLink}
             time={collab.time}
             address={collab.address}
-            work={collab.work}
+            work={collab.work[language]}
         />
     ));
 };
 
 const Details = ({ position, company, companyLink, time, address, work }) => {
     const ref = useRef(null);
-    const displayWork = (works) => {
-        return works.split(". ").map(function (description, index) {
-            return (
-                <li key={index} className="list-disc ms-9">
-                    {description}
-                </li>
-            );
-        });
+    const displayWork = (work) => {
+        return work.split(". ").map((description, index) => (
+            <li key={index} className="list-disc ms-9">
+                {description}
+            </li>
+        ));
     };
+
     return (
         <li
             ref={ref}
@@ -88,4 +88,5 @@ const Experience = () => {
         </div>
     );
 };
+
 export default Experience;
