@@ -11,7 +11,7 @@ import Experience from "../components/Experience";
 import Layout from "../components/Layout";
 import Skills from "../components/Skills";
 import TransitionEffect from "../components/TransitionEffect";
-import ProfilePicture from "../img/photo_Alex_R.jpg";
+import ProfilePicture from "../img/photo_Petru_T.jpeg";
 
 const AnimatedNumbers = ({ value }) => {
     const ref = useRef(null);
@@ -37,7 +37,7 @@ const AnimatedNumbers = ({ value }) => {
 
 const experienceYears = () => {
     const currentYear = new Date().getFullYear();
-    const experienceYears = currentYear - 2022;
+    const experienceYears = currentYear - 2021;
     return experienceYears;
 };
 
@@ -89,7 +89,7 @@ const About = () => {
                             <Image
                                 src={ProfilePicture}
                                 alt="Petru Tîrlă"
-                                className="w-full h-auto rounded-2xl"
+                                className="w-full h-auto rounded-full"
                                 priority
                                 sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
                             />
