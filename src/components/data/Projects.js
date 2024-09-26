@@ -1,11 +1,11 @@
-import AlexShopEcommerce from "./../../img/Alex_Shop_Ecommerce.jpg";
-import Books from "./../../img/Books2.jpg";
-// import Hotel from "./../../img/Hotel.jpg";
-// import Jungle from "./../../img/Jungle.jpg";
-// import Marvel from "./../../img/Marvel.jpg";
-// import News from "./../../img/News.jpg";
-import Portfolio from "./../../img/Portfolio.jpg";
-// import Shiny from "./../../img/Shiny.jpg";
+import AiFrontDesk from "./../../img/AiFrontDesk.webp";
+import AltfelDesign from "./../../img/AltfelDesign.webp";
+import AutoTinder from "./../../img/AutoTinder.png";
+import Expansio from "./../../img/Expansio.webp";
+import Portfolio from "./../../img/PetruTirla.webp";
+import SportWebsite from "./../../img/SportWebsite.webp";
+import SyncBusiness from "./../../img/SyncBusiness.webp";
+import ZonaDeConfort from "./../../img/ZonaDeConfort.webp";
 
 export const projects = {
     collaborations: [
@@ -98,14 +98,14 @@ export const projects = {
     personnalProjects: [
         {
             name: "AiFrontDesk",
-            img: AlexShopEcommerce,
-            live_demo_url: "#",
+            img: AiFrontDesk,
+            live_demo_url: "https://app.aifrontdesk.io/",
             gitHub_url: "#",
             technologies: [
                 "#OpenAI API",
+                "#Node.js",
                 "#React.js",
                 "#Next.js",
-                "#Node.js",
                 "#Twilio",
                 "#Stripe",
                 "#WebSocket",
@@ -133,22 +133,78 @@ export const projects = {
             },
         },
         {
-            name: "JOBIFY",
-            img: Portfolio,
-            live_demo_url: "#",
+            name: "Altfel Design Studio",
+            img: AltfelDesign,
+            live_demo_url: "https://altfeldesignstudio.com/",
             gitHub_url: "#",
-            technologies: ["#React", "#Next.js", "#PostgreSQL"],
+            technologies: ["#WordPress", "#Elementor", "#CSS"],
             colSize: 6,
             summary: {
-                en: "Application for freelancer-client collaboration using React, Next.js and PostgreSQL, including job posting, applications, client communication, invoicing, and project management.",
-                ro: "Aplicație pentru colaborarea freelancer-client folosind React, Next.js și PostgreSQL, incluzând postarea de joburi, aplicații, comunicarea cu clienții, facturare și managementul proiectelor.",
-                fr: "Application de collaboration freelance-client utilisant React, Next.js et PostgreSQL, comprenant la publication d'offres d'emploi, les candidatures, la communication avec les clients, la facturation et la gestion de projet.",
-                it: "Applicazione per la collaborazione freelancer-cliente utilizzando React, Next.js e PostgreSQL, inclusa la pubblicazione di lavori, candidature, comunicazione con i clienti, fatturazione e gestione dei progetti.",
+                en: "A website created for an Architectural Design Studio, showcasing their object design, commercial, and residential projects. The site features a bilingual interface (RO/EN) and a minimalist design that highlights the studio's work.",
+                ro: "Un site web creat pentru un Studio de Design Arhitectural, prezentând proiectele lor de design de obiecte, comerciale și rezidențiale. Site-ul are o interfață bilingvă (RO/EN) și un design minimalist care evidențiază lucrările studioului.",
+                fr: "Un site web créé pour un Studio de Design Architectural, présentant leurs projets de design d'objets, commerciaux et résidentiels. Le site dispose d'une interface bilingue (RO/EN) et d'un design minimaliste qui met en valeur le travail du studio.",
+                it: "Un sito web creato per uno Studio di Design Architettonico, che mostra i loro progetti di design di oggetti, commerciali e residenziali. Il sito presenta un'interfaccia bilingue (RO/EN) e un design minimalista che mette in evidenza il lavoro dello studio.",
+            },
+        },
+        {
+            name: "Expansio Agency",
+            img: Expansio,
+            live_demo_url: "https://expansioagency.com/",
+            gitHub_url: "#",
+            technologies: ["#Webflow", "#JavaScript", "#CSS"],
+            colSize: 6,
+            summary: {
+                en: "A digital agency website offering web design and social media management services. The site features a modern, dynamic design with interactive elements and detailed service descriptions.",
+                ro: "Un site web pentru o agenție digitală care oferă servicii de web design și gestionare a social media. Site-ul are un design modern și dinamic, cu elemente interactive și descrieri detaliate ale serviciilor.",
+                fr: "Un site web d'agence numérique proposant des services de conception web et de gestion des médias sociaux. Le site présente un design moderne et dynamique avec des éléments interactifs et des descriptions détaillées des services.",
+                it: "Un sito web di agenzia digitale che offre servizi di web design e gestione dei social media. Il sito presenta un design moderno e dinamico con elementi interattivi e descrizioni dettagliate dei servizi.",
+            },
+        },
+        {
+            name: "Sport Website",
+            img: SportWebsite,
+            live_demo_url: "https://sportro.webflow.io/",
+            gitHub_url: "#",
+            technologies: ["#Webflow", "#JavaScript", "#CSS"],
+            colSize: 6,
+            summary: {
+                en: "A sports streaming platform offering 4K video on demand for various sporting events. The site includes features like event calendars, member zones, and detailed event information across multiple sports categories.",
+                ro: "O platformă de streaming sportiv care oferă video la cerere în 4K pentru diverse evenimente sportive. Site-ul include funcții precum calendare de evenimente, zone pentru membri și informații detaliate despre evenimente din mai multe categorii sportive.",
+                fr: "Une plateforme de streaming sportif offrant de la vidéo à la demande en 4K pour divers événements sportifs. Le site comprend des fonctionnalités telles que des calendriers d'événements, des zones membres et des informations détaillées sur les événements dans plusieurs catégories sportives.",
+                it: "Una piattaforma di streaming sportivo che offre video on demand in 4K per vari eventi sportivi. Il sito include funzionalità come calendari degli eventi, aree membri e informazioni dettagliate sugli eventi in diverse categorie sportive.",
+            },
+        },
+        {
+            name: "Sync Business Agency",
+            img: SyncBusiness,
+            live_demo_url: "https://syncbusinessagency.ro/",
+            gitHub_url: "#",
+            technologies: ["#WordPress", "#Elementor", "#CSS"],
+            colSize: 6,
+            summary: {
+                en: "A comprehensive business agency website offering integrated solutions from web design to branding and business consultancy. The site showcases various services including marketing, financial management, and employer branding.",
+                ro: "Un site web complet pentru o agenție de afaceri care oferă soluții integrate, de la web design la branding și consultanță de afaceri. Site-ul prezintă diverse servicii, inclusiv marketing, management financiar și branding de angajator.",
+                fr: "Un site web complet d'agence commerciale proposant des solutions intégrées, du web design au branding en passant par le conseil aux entreprises. Le site présente divers services, notamment le marketing, la gestion financière et le branding employeur.",
+                it: "Un sito web completo di agenzia commerciale che offre soluzioni integrate dalla progettazione web al branding e alla consulenza aziendale. Il sito mostra vari servizi tra cui marketing, gestione finanziaria e employer branding.",
+            },
+        },
+        {
+            name: "Zona De Confort Design",
+            img: ZonaDeConfort,
+            live_demo_url: "https://zona-de-confort.webflow.io/",
+            gitHub_url: "#",
+            technologies: ["#Webflow", "#JavaScript", "#CSS"],
+            colSize: 6,
+            summary: {
+                en: "An interior design studio website showcasing various projects including office, residential, and commercial spaces. The site offers services such as 3D design, consultancy, and interior renovations.",
+                ro: "Un site web pentru un studio de design interior care prezintă diverse proiecte, inclusiv spații de birou, rezidențiale și comerciale. Site-ul oferă servicii precum design 3D, consultanță și renovări interioare.",
+                fr: "Un site web de studio de design d'intérieur présentant divers projets, notamment des espaces de bureau, résidentiels et commerciaux. Le site propose des services tels que la conception 3D, le conseil et les rénovations intérieures.",
+                it: "Un sito web di studio di interior design che mostra vari progetti tra cui spazi per uffici, residenziali e commerciali. Il sito offre servizi come progettazione 3D, consulenza e ristrutturazioni di interni.",
             },
         },
         {
             name: "AUTO-Tinder",
-            img: Books,
+            img: AutoTinder,
             live_demo_url: "#",
             gitHub_url: "#",
             technologies: ["#Python"],

@@ -143,7 +143,7 @@ const Project = ({ title, summary, img, link, github, technologies }) => {
                             {title}
                         </h2>
                     </Link>
-                    <p className="my-2 font-medium text-dark dark:text-light 4xl:h-[70px] 2xl:h-[70px] xl:h-[100px] lg:h-[130px] md:h-[160px] md:flex md:items-stretch sm:h-auto">
+                    <p className="my-2 font-medium text-dark dark:text-light md:flex md:items-stretch h-auto">
                         <span className="text-justify md:self-center">{summary}</span>
                     </p>
                     <div className="flex flex-row justify-normal">
