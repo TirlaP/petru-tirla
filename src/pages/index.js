@@ -55,13 +55,13 @@ export default function Home() {
                                     {t.cv} <LinkArrow className={"w-6 ml-1"} />
                                 </Link>
                                 <Link
-                                    href="mailto:petru.tirla@gmail.com"
+                                    href="/contact"
                                     className="relative group ml-4 text-lg font-medium capitalize text-dark dark:text-light md:text-base"
                                 >
                                     Contact
                                     <span
                                         className={`h-[2px] inline-block bg-dark dark:bg-light absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
-                                            router.asPath === "mailto:petru.tirla@gmail.com"
+                                            router.asPath === "/contact"
                                                 ? "w-full"
                                                 : "w-0"
                                         }`}

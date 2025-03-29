@@ -5,6 +5,7 @@ export const translations = {
             about: "About",
             projects: "Projects",
             articles: "Articles",
+            contact: "Contact",
         },
         home: {
             title: "Petru Tîrlă - Full-Stack Developer Portfolio",
@@ -47,6 +48,12 @@ export const translations = {
             description: "Read articles written by Petru Tîrlă on various tech topics",
             heading: "My Articles",
         },
+        contact: {
+            title: "Contact Petru Tîrlă",
+            description: "Get in touch with Petru Tîrlă. Send me a message and I'll get back to you as soon as possible.",
+            heading: "Get In Touch",
+            subheading: "I'd love to hear from you! Whether you have a question, a project idea, or just want to say hello, feel free to drop me a message using the form below."
+        },
     },
     ro: {
         navigation: {
@@ -54,6 +61,7 @@ export const translations = {
             about: "Despre",
             projects: "Proiecte",
             articles: "Articole",
+            contact: "Contact",
         },
         home: {
             title: "Petru Tîrlă - Portofoliu Dezvoltator Full-Stack",
@@ -96,6 +104,12 @@ export const translations = {
             description: "Citiți articole scrise de Petru Tîrlă pe diverse teme tech",
             heading: "Articolele Mele",
         },
+        contact: {
+            title: "Contactează-l pe Petru Tîrlă",
+            description: "Contactează-l pe Petru Tîrlă. Trimite-mi un mesaj și îți voi răspunde cât mai curând posibil.",
+            heading: "Contactează-mă",
+            subheading: "Mi-ar plăcea să aud de la tine! Fie că ai o întrebare, o idee de proiect sau doar vrei să mă saluți, nu ezita să-mi lași un mesaj folosind formularul de mai jos."
+        },
     },
     fr: {
         navigation: {
@@ -103,6 +117,7 @@ export const translations = {
             about: "À propos",
             projects: "Projets",
             articles: "Articles",
+            contact: "Contact",
         },
         home: {
             title: "Petru Tîrlă - Portfolio de Développeur Full-Stack",
@@ -145,6 +160,12 @@ export const translations = {
             description: "Lisez les articles écrits par Petru Tîrlă sur divers sujets tech",
             heading: "Mes Articles",
         },
+        contact: {
+            title: "Contacter Petru Tîrlă",
+            description: "Entrez en contact avec Petru Tîrlă. Envoyez-moi un message et je vous répondrai dès que possible.",
+            heading: "Entrez en Contact",
+            subheading: "J'aimerais avoir de vos nouvelles ! Que vous ayez une question, une idée de projet ou que vous vouliez simplement dire bonjour, n'hésitez pas à me laisser un message en utilisant le formulaire ci-dessous."
+        },
     },
     it: {
         navigation: {
@@ -152,6 +173,7 @@ export const translations = {
             about: "Chi Sono",
             projects: "Progetti",
             articles: "Articoli",
+            contact: "Contatto",
         },
         home: {
             title: "Petru Tîrlă - Portfolio di Sviluppatore Full-Stack",
@@ -193,6 +215,12 @@ export const translations = {
             title: "Articoli di Petru Tîrlă",
             description: "Leggi gli articoli scritti da Petru Tîrlă su vari argomenti tech",
             heading: "I Miei Articoli",
+        },
+        contact: {
+            title: "Contatta Petru Tîrlă",
+            description: "Mettiti in contatto con Petru Tîrlă. Inviami un messaggio e ti risponderò il prima possibile.",
+            heading: "Mettiti in Contatto",
+            subheading: "Mi piacerebbe sentirti! Che tu abbia una domanda, un'idea per un progetto o semplicemente voglia salutare, non esitare a lasciarmi un messaggio utilizzando il modulo qui sotto."
         },
     },
 };
