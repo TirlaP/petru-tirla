@@ -9,6 +9,7 @@ import HireMe from "../components/HireMe";
 import { LinkArrow } from "../components/Icons";
 import Layout from "../components/Layout";
 import TransitionEffect from "../components/TransitionEffect";
+// Import image normally, we'll optimize it in the Image component directly
 import profilePic from "./../img/dream_developer.png";
 import { PersonJsonLd, WebsiteJsonLd } from "@/src/components/JsonLd";
 
@@ -57,7 +58,7 @@ export default function Home() {
                                 src={profilePic}
                                 alt="Petru Tîrlă's profile picture"
                                 className="w-auto h-auto m-auto rounded-full shadow-2xl lg:inline-block lg:w-full"
-                                priority
+                                loading="eager"
                                 sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 50vw"
                             />
                         </div>

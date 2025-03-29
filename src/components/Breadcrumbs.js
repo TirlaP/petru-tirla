@@ -1,51 +1,58 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { useEffect, useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 const Breadcrumbs = ({ customLabels = {} }) => {
   const router = useRouter();
   const [breadcrumbs, setBreadcrumbs] = useState([]);
 
-  // Fix for the infinite loop - use useMemo for stable dependency
-  const pathWithoutQuery = useMemo(() => {
+  // Create a memoized path that won't change unless the actual path changes
+  const path = useMemo(() => {
     return router.asPath ? router.asPath.split('?')[0] : '';
   }, [router.asPath]);
 
+  // Generate breadcrumbs only when path or customLabels change
   useEffect(() => {
-    if (!pathWithoutQuery) return;
+    if (!path) return;
     
-    // Get path segments
-    const segments = pathWithoutQuery.split('/').filter(segment => segment !== '');
-    
-    // Map segments to breadcrumb items
-    const items = segments.map((segment, index) => {
-      const href = '/' + segments.slice(0, index + 1).join('/');
+    // Function to generate breadcrumbs
+    const generateBreadcrumbs = () => {
+      // Get path segments
+      const segments = path.split('/').filter(segment => segment !== '');
       
-      // Check if the segment is an ID (for dynamic routes)
-      const isId = index > 0 && segments[index - 1].toLowerCase() === 'articles';
-      
-      // Get appropriate label
-      let label;
-      if (isId && customLabels[href]) {
-        // If it's an ID and we have a custom label, use that
-        label = customLabels[href];
-      } else {
-        // Otherwise, format the segment
-        label = segment
-          // Replace hyphens with spaces
-          .replace(/-/g, ' ')
-          // Capitalize first letter of each word
-          .replace(/\b\w/g, char => char.toUpperCase());
+      if (segments.length === 0) {
+        return [{ href: '/', label: 'Home' }];
       }
       
-      return { href, label };
-    });
+      // Create breadcrumb items
+      const breadcrumbItems = [{ href: '/', label: 'Home' }];
+      
+      segments.forEach((segment, index) => {
+        const href = '/' + segments.slice(0, index + 1).join('/');
+        
+        // Check if the segment is an ID (for dynamic routes)
+        const isId = index > 0 && segments[index - 1].toLowerCase() === 'articles';
+        
+        // Get appropriate label
+        let label;
+        if (isId && customLabels[href]) {
+          label = customLabels[href];
+        } else {
+          label = segment
+            .replace(/-/g, ' ')
+            .replace(/\b\w/g, char => char.toUpperCase());
+        }
+        
+        breadcrumbItems.push({ href, label });
+      });
+      
+      return breadcrumbItems;
+    };
     
-    // Add home at the beginning
-    const breadcrumbItems = [{ href: '/', label: 'Home' }, ...items];
-    setBreadcrumbs(breadcrumbItems);
-  }, [pathWithoutQuery, customLabels]);
+    const newBreadcrumbs = generateBreadcrumbs();
+    setBreadcrumbs(newBreadcrumbs);
+  }, [path, customLabels]);
 
   if (!breadcrumbs.length || breadcrumbs.length === 1) {
     return null;
