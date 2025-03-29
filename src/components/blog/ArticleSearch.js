@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const FilterTag = ({ tag, isSelected, onClick }) => (
@@ -23,21 +23,25 @@ const ArticleSearch = ({ articles, onFilterChange }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeFilters, setActiveFilters] = useState(0);
   
-  // Extract unique categories and tags
-  const categories = [...new Set(articles.map(article => article.category).filter(Boolean))];
-  const allTags = articles.flatMap(article => article.tags || []);
-  const tags = [...new Set(allTags)];
+  // Extract unique categories and tags - memoize to prevent recreating on each render
+  const categories = useMemo(() => [...new Set(articles.map(article => article.category).filter(Boolean))], [articles]);
+  const tags = useMemo(() => {
+    const allTags = articles.flatMap(article => article.tags || []);
+    return [...new Set(allTags)];
+  }, [articles]);
   
+  // Calculate filter count separately from filtering
   useEffect(() => {
-    // Calculate active filters
     let count = 0;
     if (searchTerm) count++;
     if (selectedCategory) count++;
     if (selectedTag) count++;
     setActiveFilters(count);
-    
-    // Apply filters
-    const filteredArticles = articles.filter(article => {
+  }, [searchTerm, selectedCategory, selectedTag]);
+  
+  // Memoize filtered articles to avoid unnecessary recalculations
+  const filteredArticles = useMemo(() => {
+    return articles.filter(article => {
       // Search term filter
       const matchesSearch = searchTerm === '' || 
         article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -56,9 +60,12 @@ const ArticleSearch = ({ articles, onFilterChange }) => {
       
       return matchesSearch && matchesCategory && matchesTag;
     });
-    
+  }, [searchTerm, selectedCategory, selectedTag, articles]);
+  
+  // Call onFilterChange when filtered articles change
+  useEffect(() => {
     onFilterChange(filteredArticles);
-  }, [searchTerm, selectedCategory, selectedTag, articles, onFilterChange]);
+  }, [filteredArticles, onFilterChange]);
   
   const handleReset = () => {
     setSearchTerm('');

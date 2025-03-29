@@ -1,59 +1,51 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { useState, useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 const Breadcrumbs = ({ customLabels = {} }) => {
   const router = useRouter();
-  const [breadcrumbs, setBreadcrumbs] = useState([]);
-
-  // Create a memoized path that won't change unless the actual path changes
-  const path = useMemo(() => {
-    return router.asPath ? router.asPath.split('?')[0] : '';
-  }, [router.asPath]);
-
-  // Generate breadcrumbs only when path or customLabels change
-  useEffect(() => {
-    if (!path) return;
+  
+  // Create the entire breadcrumbs structure as a memoized value
+  // This ensures we don't have state updates in effects causing infinite loops
+  const breadcrumbs = useMemo(() => {
+    if (!router.asPath) return [];
     
-    // Function to generate breadcrumbs
-    const generateBreadcrumbs = () => {
-      // Get path segments
-      const segments = path.split('/').filter(segment => segment !== '');
+    // Get path without query parameters
+    const pathWithoutQuery = router.asPath.split('?')[0];
+    const segments = pathWithoutQuery.split('/').filter(segment => segment !== '');
+    
+    // If there are no segments, just return Home
+    if (segments.length === 0) {
+      return [{ href: '/', label: 'Home' }];
+    }
+    
+    // Create breadcrumb items
+    const breadcrumbItems = [{ href: '/', label: 'Home' }];
+    
+    segments.forEach((segment, index) => {
+      const href = '/' + segments.slice(0, index + 1).join('/');
       
-      if (segments.length === 0) {
-        return [{ href: '/', label: 'Home' }];
+      // Check if the segment is an ID (for dynamic routes)
+      const isId = index > 0 && segments[index - 1].toLowerCase() === 'articles';
+      
+      // Get appropriate label
+      let label;
+      if (isId && customLabels[href]) {
+        label = customLabels[href];
+      } else {
+        label = segment
+          .replace(/-/g, ' ')
+          .replace(/\b\w/g, char => char.toUpperCase());
       }
       
-      // Create breadcrumb items
-      const breadcrumbItems = [{ href: '/', label: 'Home' }];
-      
-      segments.forEach((segment, index) => {
-        const href = '/' + segments.slice(0, index + 1).join('/');
-        
-        // Check if the segment is an ID (for dynamic routes)
-        const isId = index > 0 && segments[index - 1].toLowerCase() === 'articles';
-        
-        // Get appropriate label
-        let label;
-        if (isId && customLabels[href]) {
-          label = customLabels[href];
-        } else {
-          label = segment
-            .replace(/-/g, ' ')
-            .replace(/\b\w/g, char => char.toUpperCase());
-        }
-        
-        breadcrumbItems.push({ href, label });
-      });
-      
-      return breadcrumbItems;
-    };
+      breadcrumbItems.push({ href, label });
+    });
     
-    const newBreadcrumbs = generateBreadcrumbs();
-    setBreadcrumbs(newBreadcrumbs);
-  }, [path, customLabels]);
+    return breadcrumbItems;
+  }, [router.asPath, customLabels]);
 
+  // Don't render anything if we only have Home or no breadcrumbs
   if (!breadcrumbs.length || breadcrumbs.length === 1) {
     return null;
   }
