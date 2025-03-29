@@ -55,6 +55,7 @@ const formatDate = (dateString) => {
 
 export async function getStaticPaths() {
   const paths = getAllArticleIds();
+  console.log('Generated article paths:', paths);
   return {
     paths,
     fallback: false,

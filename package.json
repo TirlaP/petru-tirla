@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "clean": "rm -rf .next out",
+    "build": "npm run clean && next build",
+    "export": "next export",
     "start": "next start",
     "lint": "next lint",
     "deploy": "touch out/.nojekyll"

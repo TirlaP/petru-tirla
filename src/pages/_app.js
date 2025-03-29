@@ -8,11 +8,14 @@ import { LanguageProvider } from "../context/LanguageContext";
 import "./../styles/globals.css";
 import Script from "next/script";
 
-// Use font optimization from Next.js
+// Use font optimization from Next.js - with more explicit options
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-mont",
-  display: "swap" // Optimize font loading
+  display: "swap", // Optimize font loading
+  fallback: ['system-ui', 'arial', 'sans-serif'],
+  preload: true,
+  weight: ['400', '500', '600', '700']
 });
 
 export default function App({ Component, pageProps }) {

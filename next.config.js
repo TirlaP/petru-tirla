@@ -14,8 +14,19 @@ const nextConfig = {
   
   // Optimize images
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
-  }
+    removeConsole: process.env.NODE_ENV === 'production' ? {
+      exclude: ['error', 'warn'],
+    } : false,
+  },
+  
+  // Ensure the build is clean
+  onDemandEntries: {
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 4,
+  },
+  
+  // Disable Font Optimization to prevent issues - we'll handle fonts ourselves
+  optimizeFonts: false,
 }
 
 module.exports = nextConfig
