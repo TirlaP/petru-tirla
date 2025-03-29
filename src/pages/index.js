@@ -10,6 +10,7 @@ import { LinkArrow } from "../components/Icons";
 import Layout from "../components/Layout";
 import TransitionEffect from "../components/TransitionEffect";
 import profilePic from "./../img/dream_developer.png";
+import { PersonJsonLd, WebsiteJsonLd } from "@/src/components/JsonLd";
 
 export default function Home() {
     const router = useRouter();
@@ -23,7 +24,30 @@ export default function Home() {
                 <meta name="description" content={t.description} />
                 <meta property="og:title" content={t.title} />
                 <meta property="og:description" content={t.description} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://tirlap.github.io/petru-tirla/" />
+                <meta property="og:image" content="https://tirlap.github.io/petru-tirla/images/profile.jpg" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={t.title} />
+                <meta name="twitter:description" content={t.description} />
             </Head>
+            
+            {/* Structured data */}
+            <PersonJsonLd
+              name="Petru Tîrlă"
+              jobTitle="Full-Stack Developer"
+              image="https://tirlap.github.io/petru-tirla/images/profile.jpg"
+              sameAs={[
+                "https://www.linkedin.com/in/petru-tirla/",
+                "https://github.com/TirlaP"
+              ]}
+            />
+            
+            <WebsiteJsonLd
+              name="Petru Tîrlă | Full-Stack Developer"
+              description="Portfolio website of Petru Tîrlă, a professional Full-Stack Developer specializing in modern web applications."
+              url="https://tirlap.github.io/petru-tirla/"
+            />
             <TransitionEffect />
             <main className="flex items-center text-dark w-full min-h-screen dark:text-light">
                 <Layout className="p-32 pt-0 xl:p-24 lg:p-16 md:p-12 md:pt-16 sm:pt-8">

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import AnimatedText from "@/src/components/AnimatedText";
 import { translations } from "@/src/components/data/Translations";
 import Layout from "@/src/components/Layout";
@@ -8,6 +9,11 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import ArticleSearch from "@/src/components/blog/ArticleSearch";
+import ArticleSkeleton from "@/src/components/blog/ArticleSkeleton";
+import Breadcrumbs from "@/src/components/Breadcrumbs";
+import NewsletterSubscribe from "@/src/components/blog/NewsletterSubscribe";
+import { WebsiteJsonLd } from "@/src/components/JsonLd";
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -89,6 +95,22 @@ export async function getStaticProps() {
 const ArticlesPage = ({ articles }) => {
   const { language } = useLanguage();
   const t = translations[language].articles;
+  const [filteredArticles, setFilteredArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading state for better UX
+    const timer = setTimeout(() => {
+      setFilteredArticles(articles);
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [articles]);
+
+  const handleFilterChange = (filtered) => {
+    setFilteredArticles(filtered);
+  };
 
   return (
     <>
@@ -98,23 +120,55 @@ const ArticlesPage = ({ articles }) => {
         <meta property="og:title" content={t.title} />
         <meta property="og:description" content={t.description} />
       </Head>
+      
+      {/* Structured data */}
+      <WebsiteJsonLd
+        name="Petru Tîrlă | Articles"
+        description="Read articles and tutorials by Petru Tîrlă on web development, programming, and technology."
+        url="https://tirlap.github.io/petru-tirla/articles/"
+      />
+      
       <TransitionEffect />
       <main className="flex items-center text-dark w-full min-h-screen dark:text-light">
         <Layout className="p-32 pt-0 xl:p-24 lg:p-16 md:p-12 md:pt-16 sm:pt-8">
+          <Breadcrumbs />
+          
           <AnimatedText
             text={t.heading}
             className="mb-16 lg:!text-7xl sm:mb-8 sm:!text-6xl xs:!text-4xl"
           />
           
-          {articles.length > 0 ? (
+          {/* Search and filter */}
+          <ArticleSearch 
+            articles={articles} 
+            onFilterChange={handleFilterChange} 
+          />
+          
+          {/* Articles grid */}
+          {isLoading ? (
+            <ArticleSkeleton count={4} />
+          ) : filteredArticles.length > 0 ? (
             <div className="grid grid-cols-2 gap-16 lg:gap-8 md:grid-cols-1 md:gap-y-16">
-              {articles.map((article) => (
+              {filteredArticles.map((article) => (
                 <ArticleItem key={article.id} article={article} />
               ))}
             </div>
           ) : (
-            <p className="text-center text-xl">No articles found. Check back soon!</p>
+            <div className="text-center mt-8">
+              <p className="text-xl mb-4">No articles found matching your criteria.</p>
+              <button
+                onClick={() => setFilteredArticles(articles)}
+                className="bg-primary text-light px-4 py-2 rounded-md hover:bg-primary/90"
+              >
+                View All Articles
+              </button>
+            </div>
           )}
+          
+          {/* Newsletter subscription */}
+          <div className="mt-24">
+            <NewsletterSubscribe />
+          </div>
         </Layout>
       </main>
     </>
