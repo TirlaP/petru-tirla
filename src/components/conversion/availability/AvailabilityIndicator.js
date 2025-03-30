@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { availabilityData } from '@/src/components/data/conversion/AvailabilityData';
+import Link from 'next/link';
 
 const AvailabilityIndicator = ({ compact = false }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -60,12 +61,12 @@ const AvailabilityIndicator = ({ compact = false }) => {
               </div>
               
               <div className="mt-3 text-center">
-                <a 
+                <Link 
                   href="/contact#availability" 
                   className="text-primary dark:text-primaryDark hover:underline text-sm font-medium"
                 >
                   View full availability
-                </a>
+                </Link>
               </div>
             </motion.div>
           )}

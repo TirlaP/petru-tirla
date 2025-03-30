@@ -65,7 +65,7 @@ const FloatingCTA = () => {
                   <div className="text-center mb-4">
                     <h3 className="font-bold text-primary dark:text-primaryDark">Need help with a project?</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                      I'm available for new opportunities. Let's talk!
+                      I&apos;m available for new opportunities. Let&apos;s talk!
                     </p>
                   </div>
                   <div className="space-y-2">

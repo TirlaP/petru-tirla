@@ -216,7 +216,7 @@ const ContactForm = () => {
         </div>
         <h3 className="text-xl md:text-2xl font-bold text-dark dark:text-light mb-2">Message Sent!</h3>
         <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-4 md:mb-6">
-          Thank you for reaching out. I'll get back to you as soon as possible.
+          Thank you for reaching out. I&apos;ll get back to you as soon as possible.
         </p>
         <motion.button
           whileHover={{ scale: 1.05 }}

@@ -43,9 +43,9 @@ const TestimonialCard = ({ testimonial, isCurrent }) => {
       </div>
       
       <blockquote className="testimonial-quote text-gray-600 dark:text-gray-300 italic mb-4 relative">
-        <span className="text-4xl text-primary/20 dark:text-primaryDark/20 absolute -top-6 -left-2">"</span>
-        "{quote}"
-        <span className="text-4xl text-primary/20 dark:text-primaryDark/20 absolute -bottom-10 -right-2">"</span>
+        <span className="text-4xl text-primary/20 dark:text-primaryDark/20 absolute -top-6 -left-2">&ldquo;</span>
+        &ldquo;{quote}&rdquo;
+        <span className="text-4xl text-primary/20 dark:text-primaryDark/20 absolute -bottom-10 -right-2">&rdquo;</span>
       </blockquote>
       
       <div className="testimonial-project-type mt-6 text-sm text-gray-500 dark:text-gray-400 font-medium">

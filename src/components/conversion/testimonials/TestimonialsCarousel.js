@@ -88,7 +88,7 @@ const TestimonialsCarousel = () => {
                         Client Testimonials
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                        Don't just take my word for it. Here's what clients have to say about
+                        Don&apos;t just take my word for it. Here&apos;s what clients have to say about
                         working with me.
                     </p>
                 </motion.div>

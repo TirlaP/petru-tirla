@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -94,14 +95,14 @@ const CaseStudyDetail = () => {
   const [caseStudy, setCaseStudy] = useState(null);
   const [activeSection, setActiveSection] = useState('overview');
   
-  // Sections for table of contents
-  const sections = [
+  // Sections for table of contents - wrapped in useMemo to prevent recreating the array on each render
+  const sections = React.useMemo(() => [
     { id: 'overview', title: 'Overview' },
     { id: 'challenge', title: 'The Challenge' },
     { id: 'approach', title: 'Our Approach' },
     { id: 'solution', title: 'The Solution' },
     { id: 'results', title: 'Results & Impact' }
-  ];
+  ], []);
   
   useEffect(() => {
     if (id) {
@@ -312,7 +313,7 @@ const CaseStudyDetail = () => {
                 {/* Testimonial */}
                 <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6 border-l-4 border-primary dark:border-primaryDark mb-8">
                   <blockquote className="text-gray-700 dark:text-gray-300 italic mb-4">
-                    "{results.testimonial}"
+                    &ldquo;{results.testimonial}&rdquo;
                   </blockquote>
                   <div className="flex items-center">
                     <div>
