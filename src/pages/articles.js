@@ -30,10 +30,9 @@ const ArticleItem = ({ article }) => (
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
-        className="col-span-1 w-full p-6 bg-light border border-dark rounded-2xl 
-               dark:bg-dark dark:border-light flex flex-col h-full group hover:shadow-md transition-all"
+        className="col-span-1 w-full p-4 bg-light border border-dark rounded-2xl dark:bg-dark dark:border-light flex flex-col h-full group hover:shadow-md transition-all md:p-6"
     >
-        <div className="aspect-video w-full mb-4 overflow-hidden rounded-lg relative">
+        <div className="aspect-video w-full mb-3 overflow-hidden rounded-lg relative md:mb-4">
             {article.coverImage ? (
                 <div className="w-full h-40 relative rounded-lg overflow-hidden">
                     <div
@@ -52,13 +51,13 @@ const ArticleItem = ({ article }) => (
             )}
         </div>
         <div className="flex flex-col flex-grow">
-            <div className="mb-2 text-primary dark:text-primaryDark text-sm">
+            <div className="mb-1 text-primary dark:text-primaryDark text-xs md:text-sm md:mb-2">
                 {formatDate(article.date)} • {article.readingTime} min read
             </div>
-            <h3 className="font-bold text-2xl mb-2 text-dark dark:text-light group-hover:text-primary dark:group-hover:text-primaryDark transition-colors">
+            <h3 className="font-bold text-xl mb-1 text-dark dark:text-light group-hover:text-primary dark:group-hover:text-primaryDark transition-colors md:text-2xl md:mb-2">
                 {article.title}
             </h3>
-            <p className="text-dark dark:text-light mb-4 flex-grow text-base">{article.excerpt}</p>
+            <p className="text-dark dark:text-light mb-3 flex-grow text-sm md:text-base md:mb-4">{article.excerpt}</p>
             <div className="mt-auto">
                 <div className="flex flex-wrap mb-2">
                     {article.tags?.map((tag) => (
@@ -133,12 +132,12 @@ const ArticlesPage = ({ articles }) => {
 
             <TransitionEffect />
             <main className="flex items-center text-dark w-full min-h-screen dark:text-light">
-                <Layout className="p-32 pt-0 xl:p-24 lg:p-16 md:p-12 md:pt-16 sm:pt-8">
+                <Layout className="p-8 pt-8 md:p-12 md:pt-12 lg:p-16 lg:pt-16 xl:p-24 2xl:p-32 2xl:pt-0">
                     <Breadcrumbs />
 
                     <AnimatedText
                         text={t.heading}
-                        className="mb-16 lg:!text-7xl sm:mb-8 sm:!text-6xl xs:!text-4xl"
+                        className="mb-8 text-4xl sm:!text-6xl md:mb-16 lg:!text-7xl"
                     />
 
                     {/* Search and filter */}
@@ -148,7 +147,7 @@ const ArticlesPage = ({ articles }) => {
                     {isLoading ? (
                         <ArticleSkeleton count={4} />
                     ) : filteredArticles.length > 0 ? (
-                        <div className="grid grid-cols-2 gap-16 lg:gap-8 md:grid-cols-1 md:gap-y-16">
+                        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8 lg:gap-16">
                             {filteredArticles.map((article) => (
                                 <ArticleItem key={article.id} article={article} />
                             ))}
@@ -168,7 +167,7 @@ const ArticlesPage = ({ articles }) => {
                     )}
 
                     {/* Newsletter subscription */}
-                    <div className="mt-24">
+                    <div className="mt-12 md:mt-16 lg:mt-24">
                         <NewsletterSubscribe />
                     </div>
                 </Layout>

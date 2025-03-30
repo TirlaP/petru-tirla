@@ -9,6 +9,9 @@ import useThemeSwitcher from "./hooks/useThemeSwitcher";
 import { GithubIcon, LinkedInIcon, MoonIcon, SunIcon } from "./Icons";
 import Logo from "./Logo";
 
+// Import availability indicator component
+import AvailabilityIndicator from "./conversion/availability/AvailabilityIndicator";
+
 const CustomLink = ({ href, title, className = "" }) => {
     const router = useRouter();
     return (
@@ -63,9 +66,9 @@ const NavBar = () => {
         setIsOpen(!isOpen);
     };
     return (
-        <header className="w-full px-32 py-8 font-medium flex items-center justify-between dark:text-light relative z-10 lg:px-16 md:px-12 sm:px-8">
+        <header className="w-full px-8 py-8 font-medium flex items-center justify-between dark:text-light relative z-10 md:px-12 lg:px-16 xl:px-32">
             <button
-                className=" flex-col justify-center items-center hidden lg:flex lg:absolute lg:left-20 lg:top-10"
+                className="flex-col justify-center items-center flex absolute left-8 top-10 lg:hidden"
                 onClick={handleClick}
             >
                 <span
@@ -84,14 +87,17 @@ const NavBar = () => {
                     }`}
                 ></span>
             </button>
-            <div className="w-full flex justify-between items-center lg:hidden">
+            <div className="w-full hidden lg:flex justify-between items-center">
                 <nav>
-                    <nav>
+                    <nav className="flex items-center">
                         <CustomLink href="/" title={t.home} className="mr-4" />
                         <CustomLink href="/about" title={t.about} className="mr-4" />
                         <CustomLink href="/projects" title={t.projects} className="mr-4" />
                         <CustomLink href="/articles" title={t.articles} className="mr-4" />
                         <CustomLink href="/contact" title={t.contact || "Contact"} className="mr-4" />
+                        <div className="ml-4">
+                            <AvailabilityIndicator compact={true} />
+                        </div>
                     </nav>
                 </nav>
                 <nav className="flex items-center justify-center flex-wrap">
@@ -166,6 +172,9 @@ const NavBar = () => {
                             className=""
                             toggle={handleClick}
                         />
+                        <div className="mt-4 px-4 py-2 bg-light dark:bg-dark rounded-lg">
+                            <AvailabilityIndicator compact={true} />
+                        </div>
                     </nav>
 
                     <nav className="flex items-center justify-center flex-wrap mt-2">

@@ -8,19 +8,29 @@ import { LanguageProvider } from "../context/LanguageContext";
 import "./../styles/globals.css";
 import Script from "next/script";
 
+// Import conversion optimization components
+import LimitedAvailabilityBanner from "@/src/components/conversion/LimitedAvailabilityBanner";
+import { useEffect, useState } from "react";
+
 // Use font optimization from Next.js - with more explicit options
 const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-mont",
-  display: "swap", // Optimize font loading
-  fallback: ['system-ui', 'arial', 'sans-serif'],
-  preload: true,
-  weight: ['400', '500', '600', '700']
+    subsets: ["latin"],
+    variable: "--font-mont",
+    display: "swap", // Optimize font loading
+    fallback: ["system-ui", "arial", "sans-serif"],
+    preload: true,
+    weight: ["400", "500", "600", "700"],
 });
 
 export default function App({ Component, pageProps }) {
     const router = useRouter();
-    
+    const [mounted, setMounted] = useState(false);
+
+    // Ensure hydration completes before showing availability banner
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     return (
         <LanguageProvider>
             <Head>
@@ -29,25 +39,28 @@ export default function App({ Component, pageProps }) {
                 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
                 <meta name="theme-color" content="#1b1b1b" media="(prefers-color-scheme: dark)" />
                 <link rel="icon" href="/favicon.ico" />
-                
+
                 {/* Performance optimizations */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                
+
                 {/* SEO */}
                 <meta name="robots" content="index, follow" />
                 <meta property="og:type" content="website" />
                 <meta property="og:site_name" content="Petru Tîrlă" />
             </Head>
-            
+
             {/* Skip to main content for accessibility */}
-            <a 
-              href="#main-content" 
-              className="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-primary focus:text-light z-50"
+            <a
+                href="#main-content"
+                className="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-primary focus:text-light z-50"
             >
-              Skip to main content
+                Skip to main content
             </a>
-            
+
+            {/* Limited Availability Banner */}
+            {/* {mounted && <LimitedAvailabilityBanner />} */}
+
             <main
                 className={`${montserrat.variable} font-mont bg-light dark:bg-dark w-full min-h-screen`}
                 id="main-content"

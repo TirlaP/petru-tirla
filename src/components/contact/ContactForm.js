@@ -15,7 +15,7 @@ const InputField = ({
   const isOccupied = value.length > 0;
   
   return (
-    <div className="mb-6 relative">
+    <div className="mb-4 md:mb-5 relative">
       <div className="relative">
         {type !== 'textarea' ? (
           <input
@@ -25,7 +25,7 @@ const InputField = ({
             value={value}
             onChange={onChange}
             required={required}
-            className={`peer w-full bg-transparent px-4 py-3 border-2 rounded-lg outline-none transition-all
+            className={`peer w-full bg-transparent px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg outline-none transition-all text-sm md:text-base
                      ${isFocused ? 'border-primary dark:border-primaryDark' : 'border-gray-300 dark:border-gray-600'}
                      ${error ? 'border-red-500 dark:border-red-400' : ''}
                      text-dark dark:text-light focus:border-primary dark:focus:border-primaryDark`}
@@ -40,8 +40,8 @@ const InputField = ({
             value={value}
             onChange={onChange}
             required={required}
-            rows="5"
-            className={`peer w-full bg-transparent px-4 py-3 border-2 rounded-lg outline-none transition-all resize-none
+            rows="4"
+            className={`peer w-full bg-transparent px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg outline-none transition-all resize-none text-sm md:text-base
                      ${isFocused ? 'border-primary dark:border-primaryDark' : 'border-gray-300 dark:border-gray-600'}
                      ${error ? 'border-red-500 dark:border-red-400' : ''}
                      text-dark dark:text-light focus:border-primary dark:focus:border-primaryDark`}
@@ -53,10 +53,10 @@ const InputField = ({
         
         <label 
           htmlFor={name}
-          className={`absolute text-sm left-3 transition-all duration-200 pointer-events-none
+          className={`absolute text-xs md:text-sm left-3 transition-all duration-200 pointer-events-none
                    ${(isFocused || isOccupied) 
-                     ? 'transform -translate-y-6 bg-light dark:bg-dark px-1 text-primary dark:text-primaryDark text-xs' 
-                     : 'top-3 text-gray-500 dark:text-gray-400'}`}
+                     ? 'transform -translate-y-5 md:-translate-y-6 bg-light dark:bg-dark px-1 text-primary dark:text-primaryDark text-xs' 
+                     : 'top-2 md:top-3 text-gray-500 dark:text-gray-400'}`}
         >
           {label} {required && <span className="text-red-500">*</span>}
         </label>
@@ -207,22 +207,22 @@ const ContactForm = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="w-full max-w-lg mx-auto bg-light dark:bg-dark border border-gray-200 dark:border-gray-700 rounded-xl p-8 shadow-lg text-center"
+        className="w-full max-w-lg mx-auto bg-light dark:bg-dark border border-gray-200 dark:border-gray-700 rounded-xl p-4 md:p-6 shadow-lg text-center"
       >
-        <div className="w-20 h-20 mx-auto rounded-full flex items-center justify-center bg-green-100 text-green-600 mb-6">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div className="w-16 h-16 md:w-20 md:h-20 mx-auto rounded-full flex items-center justify-center bg-green-100 text-green-600 mb-4 md:mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 md:h-10 md:w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-2xl font-bold text-dark dark:text-light mb-2">Message Sent!</h3>
-        <p className="text-gray-600 dark:text-gray-300 mb-6">
+        <h3 className="text-xl md:text-2xl font-bold text-dark dark:text-light mb-2">Message Sent!</h3>
+        <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-4 md:mb-6">
           Thank you for reaching out. I'll get back to you as soon as possible.
         </p>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setSubmitStatus(null)}
-          className="bg-primary text-light px-6 py-2 rounded-lg font-medium"
+          className="bg-primary dark:bg-primaryDark text-light px-4 py-2 rounded-lg text-sm md:text-base font-medium"
         >
           Send Another Message
         </motion.button>
@@ -235,11 +235,11 @@ const ContactForm = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="w-full max-w-lg mx-auto bg-light/50 dark:bg-dark/50 rounded-xl p-8 shadow-lg border border-gray-200 dark:border-gray-700"
+      className="w-full max-w-lg mx-auto bg-light/50 dark:bg-dark/50 rounded-xl p-4 md:p-6 shadow-lg border border-gray-200 dark:border-gray-700"
     >
       {/* Progress bar */}
-      <div className="mb-8">
-        <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+      <div className="mb-6">
+        <div className="h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
           <motion.div 
             className={`h-full bg-primary dark:bg-primaryDark`}
             initial={{ width: "0%" }}
@@ -247,7 +247,7 @@ const ContactForm = () => {
             transition={{ duration: 0.3 }}
           />
         </div>
-        <div className="flex justify-between mt-2 text-xs text-gray-500 dark:text-gray-400">
+        <div className="flex justify-between mt-1 text-xs text-gray-500 dark:text-gray-400">
           <span className={formStep >= 0 ? "font-medium text-primary dark:text-primaryDark" : ""}>Personal Info</span>
           <span className={formStep >= 1 ? "font-medium text-primary dark:text-primaryDark" : ""}>Your Message</span>
         </div>
@@ -280,7 +280,7 @@ const ContactForm = () => {
               exit="exit"
               transition={{ duration: 0.3 }}
             >
-              <h3 className="text-xl font-bold text-dark dark:text-light mb-6">Tell me about yourself</h3>
+              <h3 className="text-lg md:text-xl font-bold text-dark dark:text-light mb-4">Tell me about yourself</h3>
               
               <InputField
                 label="Name"
@@ -305,12 +305,12 @@ const ContactForm = () => {
                 <motion.button
                   type="button"
                   onClick={nextStep}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-primary text-light py-2 px-6 rounded-lg font-medium flex items-center"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="bg-primary text-light py-1.5 px-4 md:py-2 md:px-5 rounded-lg text-sm md:text-base font-medium flex items-center"
                 >
                   Next
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </motion.button>
@@ -327,7 +327,7 @@ const ContactForm = () => {
               exit="exit"
               transition={{ duration: 0.3 }}
             >
-              <h3 className="text-xl font-bold text-dark dark:text-light mb-6">Your Message</h3>
+              <h3 className="text-lg md:text-xl font-bold text-dark dark:text-light mb-4">Your Message</h3>
               
               <InputField
                 label="Subject"
@@ -350,11 +350,11 @@ const ContactForm = () => {
                 <motion.button
                   type="button"
                   onClick={prevStep}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-dark dark:border-light text-dark dark:text-light py-2 px-6 rounded-lg font-medium flex items-center hover:bg-dark hover:text-light dark:hover:bg-light dark:hover:text-dark transition-colors"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="border-2 border-dark dark:border-light text-dark dark:text-light py-1.5 px-4 md:py-2 md:px-5 rounded-lg text-sm md:text-base font-medium flex items-center hover:bg-dark hover:text-light dark:hover:bg-light dark:hover:text-dark transition-colors"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                   Back
@@ -363,13 +363,13 @@ const ContactForm = () => {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-primary text-light py-2 px-6 rounded-lg font-medium flex items-center disabled:opacity-50"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="bg-primary text-light py-1.5 px-4 md:py-2 md:px-5 rounded-lg text-sm md:text-base font-medium flex items-center disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <>
-                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>

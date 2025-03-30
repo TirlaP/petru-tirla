@@ -72,11 +72,11 @@ const Experience = () => {
     const t = translations[language].experience;
 
     return (
-        <div className="my-64">
-            <h2 className="font-bold text-8xl mb-32 w-full text-center md:text-6xl xs:text-4xl md:mb-16">
+        <div className="my-32">
+            <h2 className="font-bold text-4xl mb-16 sm:mb-32 w-full text-center xs:text-4xl md:mb-16 sm:!text-6xl lg:!text-7xl">
                 {t.heading}
             </h2>
-            <div ref={ref} className="w-[75%] mx-auto relative lg:w-[90%] md:w-full">
+            <div ref={ref} className="mx-auto relative w-full md:w[75%] lg:w-[90%]">
                 <motion.div
                     className="absolute left-9 top-0.5 w-[4px] h-full bg-dark origin-top dark:bg-light md:w-[2px] md:left-[30px] xs:left-[20px]"
                     style={{ scaleY: scrollYProgress }}
