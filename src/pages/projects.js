@@ -74,15 +74,21 @@ const FeaturedProject = ({ title, summary, img, link, github, technologies }) =>
                     target="_blank"
                     className="w-full cursor-pointer overflow-hidden rounded-lg lg:w-1/2"
                 >
-                    <FramerImage
-                        src={img}
-                        alt={title}
-                        className="w-full h-auto flex justify-center items-center"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.2 }}
-                        priority
-                        sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 50vw"
-                    />
+                    {img ? (
+                        <FramerImage
+                            src={img}
+                            alt={title}
+                            className="w-full h-auto flex justify-center items-center"
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.2 }}
+                            priority
+                            sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 50vw"
+                        />
+                    ) : (
+                        <div className="w-full h-64 bg-gradient-to-br from-primary/20 to-primaryDark/20 dark:from-primary/10 dark:to-primaryDark/10 flex items-center justify-center rounded-lg">
+                            <span className="text-4xl font-bold text-primary/40 dark:text-primaryDark/40">{title.charAt(0)}</span>
+                        </div>
+                    )}
                 </Link>
                 <div className="w-full flex flex-col items-start justify-between pt-6 lg:w-1/2 lg:pl-6 lg:pt-0">
                     <Link
@@ -131,15 +137,21 @@ const Project = ({ title, summary, img, link, github, technologies }) => {
                     target="_blank"
                     className="w-full cursor-pointer overflow-hidden rounded-lg"
                 >
-                    <FramerImage
-                        src={img}
-                        alt={title}
-                        className="w-full h-auto"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.2 }}
-                        priority
-                        sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 50vw"
-                    />
+                    {img ? (
+                        <FramerImage
+                            src={img}
+                            alt={title}
+                            className="w-full h-auto"
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.2 }}
+                            priority
+                            sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 50vw"
+                        />
+                    ) : (
+                        <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-primaryDark/20 dark:from-primary/10 dark:to-primaryDark/10 flex items-center justify-center rounded-lg">
+                            <span className="text-3xl font-bold text-primary/40 dark:text-primaryDark/40">{title.charAt(0)}</span>
+                        </div>
+                    )}
                 </Link>
                 <div className="w-full flex flex-col items-start justify-between mt-4">
                     <Link

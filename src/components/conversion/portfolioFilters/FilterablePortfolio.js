@@ -26,13 +26,19 @@ const ProjectCard = ({ project, viewMode }) => {
       >
         <div className="flex flex-col md:flex-row">
           <div className="relative w-full md:w-1/4 h-48 md:h-auto">
-            <Image
-              src={img}
-              alt={name}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 25vw"
-            />
+            {img ? (
+              <Image
+                src={img}
+                alt={name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 25vw"
+              />
+            ) : (
+              <div className="w-full h-full min-h-[12rem] bg-gradient-to-br from-primary/20 to-primaryDark/20 dark:from-primary/10 dark:to-primaryDark/10 flex items-center justify-center">
+                <span className="text-2xl font-bold text-primary/40 dark:text-primaryDark/40">{name.charAt(0)}</span>
+              </div>
+            )}
           </div>
           
           <div className="p-6 md:w-3/4">
@@ -91,13 +97,19 @@ const ProjectCard = ({ project, viewMode }) => {
       layout
     >
       <div className="relative h-48">
-        <Image
-          src={img}
-          alt={name}
-          fill
-          className="object-cover"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        />
+        {img ? (
+          <Image
+            src={img}
+            alt={name}
+            fill
+            className="object-cover"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primaryDark/20 dark:from-primary/10 dark:to-primaryDark/10 flex items-center justify-center">
+            <span className="text-3xl font-bold text-primary/40 dark:text-primaryDark/40">{name.charAt(0)}</span>
+          </div>
+        )}
       </div>
       
       <div className="p-5 flex flex-col flex-grow">
