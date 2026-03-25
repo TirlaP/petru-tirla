@@ -1,11 +1,4 @@
 import AiFrontDesk from "./../../img/AiFrontDesk.webp";
-import AltfelDesign from "./../../img/AltfelDesign.webp";
-import AutoTinder from "./../../img/AutoTinder.png";
-import Expansio from "./../../img/Expansio.webp";
-import Portfolio from "./../../img/PetruTirla.webp";
-import SportWebsite from "./../../img/SportWebsite.webp";
-import SyncBusiness from "./../../img/SyncBusiness.webp";
-import ZonaDeConfort from "./../../img/ZonaDeConfort.webp";
 
 export const projects = {
     collaborations: [
@@ -113,46 +106,6 @@ export const projects = {
                 it: "",
             },
         },
-        {
-            name: "Pentalog",
-            time: "04/2022 - 07/2022",
-            projects: ["Full-Stack Admin Dashboard"],
-            position: {
-                en: "Software Engineer, Intern",
-                ro: "Inginer Software, Intern",
-                fr: "Ingénieur Logiciel, Stagiaire",
-                it: "Ingegnere del Software, Stagista",
-            },
-            company: "Pentalog",
-            companyLink: "https://www.pentalog.com/",
-            address: "Remote, Romania",
-            work: {
-                en: "Designed and implemented a Full-Stack Admin Dashboard using HTML, CSS, JavaScript, Firebase and Node, with functionalities such as viewing orders, customers, and employees in data tables, visualizing data through charts, and using a built-in calendar and kanban.",
-                ro: "Am proiectat și implementat un Dashboard Admin Full-Stack folosind HTML, CSS, JavaScript, Firebase și Node, cu funcționalități precum vizualizarea comenzilor, clienților și angajaților în tabele de date, vizualizarea datelor prin grafice și utilizarea unui calendar și kanban integrat.",
-                fr: "",
-                it: "",
-            },
-        },
-        {
-            name: "BTProvider",
-            time: "10/2021 - 01/2022",
-            projects: ["Data Analysis"],
-            position: {
-                en: "Data Analyst, Intern",
-                ro: "Analist de Date, Intern",
-                fr: "Analyste de Données, Stagiaire",
-                it: "Analista di Dati, Stagista",
-            },
-            company: "BTProvider",
-            companyLink: "#",
-            address: "Bucharest, Romania",
-            work: {
-                en: "Managed client data using SQL, Vertica, DBeaver, and Microsoft SQL, and designed Tableau data solutions.",
-                ro: "Am gestionat datele clienților folosind SQL, Vertica, DBeaver și Microsoft SQL și am proiectat soluții de date Tableau.",
-                fr: "",
-                it: "",
-            },
-        },
     ],
 
     personnalProjects: [
@@ -240,104 +193,6 @@ export const projects = {
             colSize: 6,
             summary: {
                 en: "Multi-tenant SaaS for luxury transportation. Stripe Connect per-tenant billing, PostGIS geo-pricing zones with Terra Draw polygon editor, voice booking via Deepgram + OpenAI intent extraction. 13+ embeddable booking widget templates, dynamic pricing engine, Google Calendar integration. Supabase with 40+ RLS policies.",
-                ro: "",
-                fr: "",
-                it: "",
-            },
-        },
-        {
-            name: "Portfolio Website",
-            img: Portfolio,
-            live_demo_url: "https://petru-tirla.netlify.app",
-            gitHub_url: "https://github.com/TirlaP/petru-tirla",
-            technologies: ["#Next.js", "#React", "#TailwindCSS"],
-            colSize: 6,
-            summary: {
-                en: "A responsive portfolio website showcasing my skills, projects, and experience as a Full-Stack Developer. Built with Next.js, React, and TailwindCSS, featuring dark mode and multi-language support.",
-                ro: "",
-                fr: "",
-                it: "",
-            },
-        },
-        {
-            name: "Altfel Design Studio",
-            img: AltfelDesign,
-            live_demo_url: "https://altfeldesignstudio.com/",
-            gitHub_url: "#",
-            technologies: ["#WordPress", "#Elementor", "#CSS"],
-            colSize: 6,
-            summary: {
-                en: "A website created for an Architectural Design Studio, showcasing their object design, commercial, and residential projects. The site features a bilingual interface (RO/EN) and a minimalist design that highlights the studio's work.",
-                ro: "",
-                fr: "",
-                it: "",
-            },
-        },
-        {
-            name: "Expansio Agency",
-            img: Expansio,
-            live_demo_url: "https://expansioagency.com/",
-            gitHub_url: "#",
-            technologies: ["#Webflow", "#JavaScript", "#CSS"],
-            colSize: 6,
-            summary: {
-                en: "A digital agency website offering web design and social media management services. The site features a modern, dynamic design with interactive elements and detailed service descriptions.",
-                ro: "",
-                fr: "",
-                it: "",
-            },
-        },
-        {
-            name: "Sport Website",
-            img: SportWebsite,
-            live_demo_url: "https://sportro.webflow.io/",
-            gitHub_url: "#",
-            technologies: ["#Webflow", "#JavaScript", "#CSS"],
-            colSize: 6,
-            summary: {
-                en: "A sports streaming platform offering 4K video on demand for various sporting events. The site includes features like event calendars, member zones, and detailed event information across multiple sports categories.",
-                ro: "",
-                fr: "",
-                it: "",
-            },
-        },
-        {
-            name: "Sync Business Agency",
-            img: SyncBusiness,
-            live_demo_url: "https://syncbusinessagency.ro/",
-            gitHub_url: "#",
-            technologies: ["#WordPress", "#Elementor", "#CSS"],
-            colSize: 6,
-            summary: {
-                en: "A comprehensive business agency website offering integrated solutions from web design to branding and business consultancy. The site showcases various services including marketing, financial management, and employer branding.",
-                ro: "",
-                fr: "",
-                it: "",
-            },
-        },
-        {
-            name: "Zona De Confort Design",
-            img: ZonaDeConfort,
-            live_demo_url: "https://zona-de-confort.webflow.io/",
-            gitHub_url: "#",
-            technologies: ["#Webflow", "#JavaScript", "#CSS"],
-            colSize: 6,
-            summary: {
-                en: "An interior design studio website showcasing various projects including office, residential, and commercial spaces. The site offers services such as 3D design, consultancy, and interior renovations.",
-                ro: "",
-                fr: "",
-                it: "",
-            },
-        },
-        {
-            name: "AUTO-Tinder",
-            img: AutoTinder,
-            live_demo_url: "#",
-            gitHub_url: "#",
-            technologies: ["#Python"],
-            colSize: 6,
-            summary: {
-                en: "A Python-based Tinder bot that learns user preferences and automates profile swiping based on those patterns.",
                 ro: "",
                 fr: "",
                 it: "",

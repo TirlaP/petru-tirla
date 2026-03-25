@@ -15,7 +15,7 @@ import { PersonJsonLd, WebsiteJsonLd } from "@/src/components/JsonLd";
 
 // Import conversion optimization components
 import ServicesGrid from "@/src/components/conversion/services/ServicesGrid";
-import TestimonialsCarousel from "@/src/components/conversion/testimonials/TestimonialsCarousel";
+
 import WorkProcessVisualization from "@/src/components/conversion/workProcess/WorkProcessVisualization";
 import ResultsDashboard from "@/src/components/conversion/results/ResultsDashboard";
 import EnhancedCTA from "@/src/components/conversion/cta/EnhancedCTA";
@@ -118,9 +118,6 @@ export default function Home() {
 
                 {/* Services Section */}
                 <ServicesGrid />
-
-                {/* Testimonials Section */}
-                <TestimonialsCarousel />
 
                 {/* Results Dashboard */}
                 <ResultsDashboard />

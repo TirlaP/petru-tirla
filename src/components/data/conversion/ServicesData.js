@@ -1,70 +1,70 @@
-import { FiLayout, FiServer, FiCode, FiPenTool, FiZap, FiDatabase } from 'react-icons/fi';
+import { FiCode, FiUsers, FiCpu, FiLink, FiDatabase, FiWifi } from 'react-icons/fi';
 
 export const services = [
   {
-    id: 'frontend',
-    title: 'Frontend Development',
-    icon: FiLayout,
-    description: 'Creating responsive, interactive user interfaces with modern frameworks and best practices for optimal user experience.',
-    technologies: ['React.js', 'Next.js', 'TailwindCSS', 'JavaScript/TypeScript'],
-    exampleProject: {
-      slug: 'aifrontdesk',
-      title: 'AiFrontDesk'
-    }
-  },
-  {
-    id: 'backend',
-    title: 'Backend Development',
-    icon: FiServer,
-    description: 'Building robust, scalable server-side applications with secure API endpoints and efficient database management.',
-    technologies: ['Node.js', 'Express', 'MongoDB', 'SQL', 'Firebase'],
-    exampleProject: {
-      slug: 'aifrontdesk',
-      title: 'AiFrontDesk'
-    }
-  },
-  {
     id: 'fullstack',
-    title: 'Full-Stack Solutions',
+    title: 'Full-Stack Web Applications',
     icon: FiCode,
-    description: 'Developing end-to-end web applications from database design to responsive UI, ensuring seamless integration between all components.',
-    technologies: ['MERN Stack', 'Next.js', 'Firebase', 'RESTful APIs'],
+    description: 'End-to-end development of modern web applications with type-safe frontends, robust backends, and production-grade infrastructure.',
+    technologies: ['React', 'TypeScript', 'Node.js', 'NestJS', 'Hono', 'PostgreSQL'],
     exampleProject: {
       slug: 'aifrontdesk',
       title: 'AiFrontDesk'
     }
   },
   {
-    id: 'uiux',
-    title: 'UI/UX Implementation',
-    icon: FiPenTool,
-    description: 'Transforming design mockups into fully functional interfaces with attention to detail, animations, and responsive behavior.',
-    technologies: ['Figma to Code', 'CSS/SCSS', 'Framer Motion', 'Tailwind'],
+    id: 'saas',
+    title: 'Multi-Tenant SaaS Platforms',
+    icon: FiUsers,
+    description: 'Architecting SaaS products with tenant isolation, row-level security, subscription billing, and scalable multi-org data models.',
+    technologies: ['RLS', 'Supabase', 'Stripe', 'Tenant Isolation', 'React', 'Hono'],
     exampleProject: {
-      slug: 'portfolio-website',
-      title: 'Portfolio Website'
+      slug: 'repup-ai',
+      title: 'RepUp AI'
     }
   },
   {
-    id: 'performance',
-    title: 'Performance Optimization',
-    icon: FiZap,
-    description: 'Analyzing and improving web application speed, reducing load times, and enhancing overall performance for better user experience.',
-    technologies: ['Lighthouse', 'Webpack', 'Code Splitting', 'Lazy Loading'],
+    id: 'ai',
+    title: 'AI & LLM Integration',
+    icon: FiCpu,
+    description: 'Integrating large language models, speech-to-text, and AI pipelines into production applications for call intelligence, voice booking, and automated analysis.',
+    technologies: ['OpenAI', 'AssemblyAI', 'Deepgram', 'BullMQ', 'NestJS'],
     exampleProject: {
-      slug: 'portfolio-website',
-      title: 'Portfolio Website'
+      slug: 'repup-ai',
+      title: 'RepUp AI'
     }
   },
   {
-    id: 'databases',
-    title: 'Database Design & Management',
+    id: 'api',
+    title: 'API Design & Integration',
+    icon: FiLink,
+    description: 'Designing clean APIs and connecting third-party systems including CRMs, identity providers, payment processors, and legacy SOAP services.',
+    technologies: ['REST', 'GraphQL', 'SCIM', 'SOAP', 'Webhooks', 'CRM Sync'],
+    exampleProject: {
+      slug: 'repup-ai',
+      title: 'RepUp AI'
+    }
+  },
+  {
+    id: 'data',
+    title: 'Data Platforms & Pipelines',
     icon: FiDatabase,
-    description: 'Creating efficient database structures, optimizing queries, and ensuring data integrity for your application.',
-    technologies: ['MongoDB', 'PostgreSQL', 'MySQL', 'Firebase'],
+    description: 'Building data ingestion pipelines, web scrapers, background job systems, and normalized data stores for large-scale datasets.',
+    technologies: ['PostgreSQL', 'BullMQ', 'Redis', 'Drizzle', 'Bun', 'Zod'],
     exampleProject: {
-      slug: 'aifrontdesk',
-      title: 'AiFrontDesk'
+      slug: 'lista-firme',
+      title: 'Lista Firme'
+    }
+  },
+  {
+    id: 'realtime',
+    title: 'Real-Time & Offline Systems',
+    icon: FiWifi,
+    description: 'Developing real-time communication layers and offline-first desktop clients with store-and-forward sync and geospatial tracking.',
+    technologies: ['WebSockets', 'Electron', 'PostGIS', 'MapLibre GL', 'Prisma'],
+    exampleProject: {
+      slug: 'maritime',
+      title: 'Maritime Fleet Management'
     }
   }
 ];

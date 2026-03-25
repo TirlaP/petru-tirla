@@ -5,7 +5,7 @@ import { techProficiencyData } from '@/src/components/data/conversion/TechProfic
 
 const TechProficiencyVisualization = () => {
   const [activeCategory, setActiveCategory] = useState('frontend');
-  const [sortOption, setSortOption] = useState('proficiency'); // 'proficiency', 'experience', 'alphabetical'
+  const [sortOption, setSortOption] = useState('experience'); // 'experience', 'alphabetical'
   const { categories } = techProficiencyData;
   
   const activeSkills = categories.find(c => c.id === activeCategory)?.skills || [];
@@ -13,14 +13,12 @@ const TechProficiencyVisualization = () => {
   // Sort skills based on selected option
   const sortedSkills = [...activeSkills].sort((a, b) => {
     switch(sortOption) {
-      case 'proficiency':
-        return b.level - a.level;
       case 'experience':
         return b.years - a.years;
       case 'alphabetical':
         return a.name.localeCompare(b.name);
       default:
-        return b.level - a.level;
+        return b.years - a.years;
     }
   });
   
@@ -67,7 +65,6 @@ const TechProficiencyVisualization = () => {
                 onChange={(e) => setSortOption(e.target.value)}
                 className="appearance-none bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg py-2 pl-4 pr-10 text-sm font-medium text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primaryDark"
               >
-                <option value="proficiency">Sort by Proficiency</option>
                 <option value="experience">Sort by Experience</option>
                 <option value="alphabetical">Sort Alphabetically</option>
               </select>
@@ -106,15 +103,15 @@ const TechProficiencyVisualization = () => {
           <div className="mt-6 flex items-center justify-center text-sm text-gray-600 dark:text-gray-400">
             <div className="flex items-center mr-6">
               <span className="block w-3 h-3 bg-green-500 rounded-full mr-2"></span>
-              <span>Actively Using</span>
+              <span>Primary</span>
             </div>
             <div className="flex items-center mr-6">
               <span className="block w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
-              <span>Occasionally Using</span>
+              <span>Actively Using</span>
             </div>
             <div className="flex items-center">
-              <span className="block w-3 h-3 bg-purple-500 rounded-full mr-2"></span>
-              <span>Currently Learning</span>
+              <span className="block w-3 h-3 bg-gray-500 rounded-full mr-2"></span>
+              <span>Production Experience</span>
             </div>
           </div>
         </div>

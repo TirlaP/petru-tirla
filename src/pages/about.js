@@ -13,7 +13,7 @@ import TransitionEffect from "../components/TransitionEffect";
 import ProfilePicture from "../img/photo_Petru_T.jpeg";
 
 // Import conversion optimization components
-import TestimonialsCarousel from "@/src/components/conversion/testimonials/TestimonialsCarousel";
+
 import EnhancedCTA from "@/src/components/conversion/cta/EnhancedCTA";
 import FloatingCTA from "@/src/components/conversion/cta/FloatingCTA";
 import { ctaData } from "@/src/components/data/conversion/CTAData";
@@ -147,11 +147,6 @@ const About = () => {
 
                     <Experience />
                     <Education />
-
-                    {/* Testimonials Section to build trust */}
-                    {/* <div className="w-full mt-16">
-                        <TestimonialsCarousel />
-                    </div> */}
 
                     {/* Final CTA */}
                     <div className="mt-16">

@@ -5,10 +5,4 @@ export const education = [
         company: `University "Stefan cel Mare"`,
         address: "Suceava, SV, RO",
     },
-    {
-        name: "Computer Science Tutor",
-        year: "Ongoing",
-        company: "Self-employed",
-        address: "Remote",
-    },
 ];
