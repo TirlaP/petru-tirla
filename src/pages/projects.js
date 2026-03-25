@@ -220,11 +220,6 @@ const Projects = () => {
                         <CaseStudiesGrid />
                     </div>
                     
-                    {/* Tech Proficiency Section */}
-                    <div className="mt-16 md:mt-24 lg:mt-32">
-                        <TechProficiencyVisualization />
-                    </div>
-                    
                     {/* Enhanced CTA */}
                     <div className="mt-10 md:mt-16 lg:mt-20">
                         <EnhancedCTA 
