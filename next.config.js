@@ -5,8 +5,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // This will properly configure GitHub Pages paths
-  basePath: process.env.NODE_ENV === 'production' ? '/petru-tirla' : '',
+  // basePath only needed for GitHub Pages, not Vercel
+  basePath: '',
   trailingSlash: true,
   
   // Add pageExtensions to include mdx files
@@ -25,8 +25,6 @@ const nextConfig = {
     pagesBufferLength: 4,
   },
   
-  // Disable Font Optimization to prevent issues - we'll handle fonts ourselves
-  optimizeFonts: false,
 }
 
 module.exports = nextConfig
