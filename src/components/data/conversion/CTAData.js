@@ -33,7 +33,7 @@ export const ctaData = {
     {
       id: "projects",
       heading: "Ready to build something great?",
-      subheading: "I have availability for new projects starting May 2025."
+      subheading: "I'm available immediately for new projects."
     },
     {
       id: "case-studies",

@@ -131,15 +131,6 @@ const About = () => {
                         </div>
                     </div>
 
-                    {/* Enhanced CTA after bio */}
-                    <div className="mt-8 mb-10 md:mt-12 md:mb-16 lg:mb-20">
-                        <EnhancedCTA
-                            variant={ctaData.variants.find((v) => v.id === "hero")}
-                            primaryCTA={ctaData.primary}
-                            secondaryCTA={ctaData.secondary}
-                        />
-                    </div>
-
                     {/* Tabbed Skills Section - includes both Skills and TechProficiencyVisualization */}
                     <div className="w-full mt-8 mb-8 md:mt-12 md:mb-12 lg:mt-16 lg:mb-16">
                         <TabbedSkillsSection />

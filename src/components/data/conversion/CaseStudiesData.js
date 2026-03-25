@@ -2,24 +2,21 @@ export const caseStudies = [
   {
     id: "aifrontdesk",
     title: "AiFrontDesk - AI-Powered Call Center Solution",
-    subtitle: "Full-Stack AI Solution with OpenAI Integration",
+    subtitle: "Full-Stack AI Solution with OpenAI & Twilio Integration",
     clientIndustry: "SaaS / Customer Service",
-    timeline: "3 months",
-    teamSize: "3 developers",
-    technologies: ["OpenAI API", "React.js", "Next.js", "Node.js", "Twilio", "Stripe", "WebSocket"],
-    challenge: "The client needed an AI-powered call center solution to handle customer inquiries with minimal human intervention, while maintaining high quality of service and natural conversation flow. The system needed to support multiple organizations with different knowledge bases and handle concurrent calls efficiently.",
-    approach: "We designed a multi-tenant architecture with real-time capabilities. I implemented a custom integration between OpenAI's API and Twilio's voice services, creating a seamless pipeline for audio processing, speech-to-text conversion, AI response generation, and text-to-speech output. The solution included a user management system with role-based access control and a customizable knowledge base that could be tailored to each organization's needs.",
-    solution: "The final solution featured:\n\n- Multi-tenant architecture supporting concurrent calls\n- 1.5 second response latency (industry-leading speed)\n- Custom webhook system for real-time call monitoring\n- Comprehensive admin dashboard for call analytics\n- Dynamic knowledge base that adapts to new information\n- Stripe integration for subscription management",
+    timeline: "6 months",
+    teamSize: "Co-founded, 2 developers",
+    technologies: ["OpenAI API", "React.js", "Next.js", "Node.js", "Twilio", "MongoDB", "Terraform", "Ansible"],
+    challenge: "Businesses needed an AI-powered call center solution to handle customer inquiries with minimal human intervention, while maintaining natural conversation flow. The system needed to support multiple organizations with different knowledge bases and handle concurrent calls efficiently.",
+    approach: "We designed a multi-tenant architecture with real-time capabilities. I implemented a custom integration between OpenAI's API and Twilio's voice services, creating a seamless pipeline for audio processing, speech-to-text conversion, AI response generation, and text-to-speech output. The solution included a user management system with role-based access control and a customizable knowledge base per client.",
+    solution: "The final solution featured:\n\n- Multi-tenant architecture supporting concurrent calls\n- 1.2 second response latency\n- Custom webhook system for real-time call monitoring\n- Comprehensive admin dashboard for call analytics\n- Dynamic knowledge base that adapts per organization\n- Infrastructure automation with Terraform and Ansible",
     results: {
       metrics: [
-        { label: "Response Latency", value: "1.5s", improvement: "70% faster than industry average" },
-        { label: "Call Resolution Rate", value: "85%", improvement: "40% increase from previous system" },
-        { label: "Agent Productivity", value: "300%", improvement: "Agents now handle 3x more calls" },
-        { label: "Cost Savings", value: "$12,000/month", improvement: "60% reduction in operational costs" }
-      ],
-      testimonial: "The AI solution developed by Petru transformed our customer service operations. We've drastically reduced wait times while maintaining high quality of service. The ROI on this project was achieved within the first two months.",
-      clientName: "David Miller",
-      clientPosition: "CTO, FrontLine Services"
+        { label: "Response Latency", value: "1.2s", improvement: "Industry-leading speed" },
+        { label: "Architecture", value: "Multi-tenant", improvement: "Concurrent call handling via Twilio" },
+        { label: "Knowledge Bases", value: "Per-client", improvement: "Custom AI training per organization" },
+        { label: "Infrastructure", value: "IaC", improvement: "Terraform + Ansible automation" }
+      ]
     },
     images: {
       before: "/images/case-studies/aifrontdesk-before.jpg",
@@ -29,33 +26,30 @@ export const caseStudies = [
     slug: "aifrontdesk"
   },
   {
-    id: "ecommerce-performance",
-    title: "E-Commerce Performance Optimization",
-    subtitle: "Boosting Speed and Conversion for an Online Store",
-    clientIndustry: "Retail / E-Commerce",
-    timeline: "6 weeks",
-    teamSize: "2 developers",
-    technologies: ["Next.js", "React", "Redux", "Tailwind CSS", "GraphQL", "Cloudinary"],
-    challenge: "The client's e-commerce platform was suffering from slow page loads (average 6.2s), poor mobile experience, and a high cart abandonment rate (78%). This was directly impacting their conversion rates and customer satisfaction.",
-    approach: "I conducted a comprehensive performance audit using Lighthouse and WebPageTest to identify bottlenecks. The approach focused on implementing modern web optimization techniques including code splitting, lazy loading, image optimization, and server-side rendering for critical paths. We also redesigned the checkout flow to reduce friction points.",
-    solution: "The implementation included:\n\n- Conversion to Next.js for improved SSR capabilities\n- Implementation of dynamic imports and code splitting\n- Cloudinary integration for responsive images and automatic WebP format\n- Redis caching for API responses\n- Checkout redesign with progress indication and form simplification\n- Custom hook-based form validation for instant feedback",
+    id: "repup-ai",
+    title: "RepUp AI - Revenue Intelligence Platform",
+    subtitle: "SaaS Platform for B2B Sales Teams with AI-Powered Conversation Intelligence",
+    clientIndustry: "SaaS / Sales Intelligence",
+    timeline: "Ongoing (Founded 2024)",
+    teamSize: "Solo founder & developer",
+    technologies: ["NestJS", "TypeScript", "React", "Supabase", "PostgreSQL", "OpenAI API", "AssemblyAI", "BullMQ", "Redis", "Stripe"],
+    challenge: "B2B sales managers and RevOps teams lacked a unified tool to transform conversation intelligence into actionable account and deal intelligence. Existing solutions were fragmented across CRMs, call recording tools, and spreadsheets, making it hard to track deal health and revenue signals.",
+    approach: "I built a full revenue intelligence workspace from scratch as a solo founder. The architecture centers on a call intelligence pipeline (audio upload, transcription via AssemblyAI, AI analysis via OpenAI) that feeds into a revenue graph with confidence-scored identity links. I implemented bilateral sync with 6 major CRMs to ensure data flows both ways without conflicts.",
+    solution: "The platform includes:\n\n- NestJS backend with 50+ services, 25+ controllers, 37 repositories\n- 6 CRM integrations with bilateral sync: HubSpot, Salesforce, Pipedrive, Zoho, ActiveCampaign, Dynamics 365\n- Call intelligence pipeline: transcription, AI summaries, action items, objection detection, risk assessment\n- Deal risk scoring with multi-signal analysis and champion detection\n- Human-in-the-loop workflow automation with draft approval before CRM writes\n- Stripe credit-based billing system\n- Dual-mode architecture (monolith + worker) for independent scaling",
     results: {
       metrics: [
-        { label: "Page Load Time", value: "1.8s", improvement: "71% reduction" },
-        { label: "Lighthouse Score", value: "94", improvement: "From 62 to 94" },
-        { label: "Cart Abandonment", value: "42%", improvement: "36% reduction" },
-        { label: "Conversion Rate", value: "4.7%", improvement: "2.2x increase" },
-        { label: "Mobile Orders", value: "+63%", improvement: "63% increase" }
-      ],
-      testimonial: "The performance improvements were immediately noticeable. Our customers have commented on how much faster and smoother the shopping experience is, and our conversion rates reflect that satisfaction. This project has had a direct positive impact on our bottom line.",
-      clientName: "Laura Chen",
-      clientPosition: "E-Commerce Director, StyleFusion"
+        { label: "Paying Clients", value: "20+", improvement: "Live SaaS business with real revenue" },
+        { label: "Active Users", value: "200+", improvement: "Growing user base across sales teams" },
+        { label: "CRM Integrations", value: "6", improvement: "HubSpot, Salesforce, Pipedrive, Zoho, ActiveCampaign, Dynamics 365" },
+        { label: "Backend Services", value: "50+", improvement: "NestJS modular architecture" },
+        { label: "DB Migrations", value: "120+", improvement: "Supabase PostgreSQL with RLS for multi-tenancy" }
+      ]
     },
     images: {
-      before: "/images/case-studies/ecommerce-before.jpg",
-      after: "/images/case-studies/ecommerce-after.jpg",
-      solution: "/images/case-studies/ecommerce-solution.jpg"
+      before: "/images/case-studies/repup-before.jpg",
+      after: "/images/case-studies/repup-after.jpg",
+      solution: "/images/case-studies/repup-solution.jpg"
     },
-    slug: "ecommerce-performance"
+    slug: "repup-ai"
   }
 ];

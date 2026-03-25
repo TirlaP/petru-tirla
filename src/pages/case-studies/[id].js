@@ -311,6 +311,7 @@ const CaseStudyDetail = () => {
                 </div>
                 
                 {/* Testimonial */}
+                {results.testimonial && (
                 <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6 border-l-4 border-primary dark:border-primaryDark mb-8">
                   <blockquote className="text-gray-700 dark:text-gray-300 italic mb-4">
                     &ldquo;{results.testimonial}&rdquo;
@@ -322,6 +323,7 @@ const CaseStudyDetail = () => {
                     </div>
                   </div>
                 </div>
+                )}
               </div>
               
               {/* Enhanced CTA */}

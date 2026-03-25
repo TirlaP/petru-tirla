@@ -17,11 +17,7 @@ import { PersonJsonLd, WebsiteJsonLd } from "@/src/components/JsonLd";
 import ServicesGrid from "@/src/components/conversion/services/ServicesGrid";
 
 import WorkProcessVisualization from "@/src/components/conversion/workProcess/WorkProcessVisualization";
-import ResultsDashboard from "@/src/components/conversion/results/ResultsDashboard";
-import EnhancedCTA from "@/src/components/conversion/cta/EnhancedCTA";
 import FloatingCTA from "@/src/components/conversion/cta/FloatingCTA";
-import { ctaData } from "@/src/components/data/conversion/CTAData";
-import AvailabilityIndicator from "@/src/components/conversion/availability/AvailabilityIndicator";
 
 export default function Home() {
     const router = useRouter();
@@ -105,22 +101,10 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {/* Enhanced Hero CTA */}
-                    <div className="mt-8 md:mt-12 lg:mt-16">
-                        <EnhancedCTA
-                            variant={ctaData.variants.find((v) => v.id === "hero")}
-                            primaryCTA={ctaData.primary}
-                            secondaryCTA={ctaData.secondary}
-                            fullWidth={true}
-                        />
-                    </div>
                 </Layout>
 
                 {/* Services Section */}
                 <ServicesGrid />
-
-                {/* Results Dashboard */}
-                <ResultsDashboard />
 
                 {/* Work Process Section */}
                 <WorkProcessVisualization />
