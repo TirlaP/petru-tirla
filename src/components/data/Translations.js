@@ -8,30 +8,28 @@ export const translations = {
             contact: "Contact",
         },
         home: {
-            title: "Petru Tîrlă - Full-Stack Developer Portfolio",
-            description: "Portfolio of Petru Tîrlă, Full-Stack Developer",
-            greeting: "Hello, I'm Petru Tîrlă",
-            intro: "I am a full-stack developer with a passion for creating innovative web applications. I love to explore new technologies and apply them to solve real-world problems. Feel free to explore my projects and contact me if you have any questions.",
+            title: "Petru Tîrlă - Full-Stack Engineer",
+            description: "Petru Tîrlă builds multi-tenant platforms, data pipelines, and AI integrations for clients across Europe and the Middle East.",
+            greeting: "Petru Tîrlă",
+            intro: "I build the software that runs businesses. Multi-tenant SaaS platforms, data pipelines processing millions of records, AI integrations that ship to real users. Currently the founder of RepUp AI and senior engineer at Papilio, serving 1,000+ users across Switzerland and Germany.",
             cv: "Resume",
             contact: "Contact",
         },
         about: {
-            title: "About Petru Tîrlă - Full-Stack Developer",
-            description:
-                "Learn about Petru Tîrlă's professional experience and educational background in full-stack development",
+            title: "About Petru Tîrlă",
+            description: "Full-stack engineer and SaaS founder. TypeScript, React, Node.js, PostgreSQL.",
             heading: "About Me",
-            bio: "I am a full-stack developer with a strong foundation in computer engineering. My academic background has equipped me with skills such as problem-solving, information research, and a curiosity for learning, which I've successfully applied to web development.",
-            experience:
-                "Over the past {years} years, I've gained solid technical skills and the ability to quickly and effectively respond to challenges. This has allowed me to contribute significantly to various projects. I've worked with technologies such as React.js, Next.js, Node.js, and have experience with both SQL and NoSQL databases.",
-            skills: "To enhance my versatility and efficiency, I've also pursued additional training in technologies like TypeScript and GraphQL. I'm always eager to learn and apply new technologies. Feel free to explore my various projects!",
+            bio: "I build multi-tenant platforms, data pipelines, and AI integrations for enterprise clients across Europe and the Middle East. I also built and run my own SaaS product with 20+ paying clients.",
+            experience: "I've shipped 6+ production systems in {years} years. RepUp AI processes call recordings through AI analysis and syncs results across 6 CRMs. Papilio serves 1,000+ users at companies like ABB, Siemens, and Swiss Re. The Maritime project runs on vessel bridge PCs in the Caspian Sea with no internet.",
+            skills: "TypeScript across everything. React on the frontend, NestJS and Hono on the backend, PostgreSQL with row-level security for multi-tenancy. I've implemented tenant isolation 4 times now.",
             collaborations: "Collaborations",
             projects: "Projects",
             yearsOfExperience: "Years of experience",
         },
         projects: {
-            title: "Petru Tîrlă's Projects",
-            description: "Explore Petru Tîrlă's various development projects",
-            heading: "My Projects",
+            title: "Projects - Petru Tîrlă",
+            description: "Production systems I've built and shipped.",
+            heading: "Projects",
             liveDemo: "Live Demo",
         },
         skills: {
@@ -44,15 +42,15 @@ export const translations = {
             heading: "Experience",
         },
         articles: {
-            title: "Articles by Petru Tîrlă",
-            description: "Read articles written by Petru Tîrlă on various tech topics",
-            heading: "My Articles",
+            title: "Articles - Petru Tîrlă",
+            description: "Technical writing on full-stack engineering.",
+            heading: "Articles",
         },
         contact: {
-            title: "Contact Petru Tîrlă",
-            description: "Get in touch with Petru Tîrlă. Send me a message and I'll get back to you as soon as possible.",
+            title: "Contact - Petru Tîrlă",
+            description: "Get in touch.",
             heading: "Get In Touch",
-            subheading: "I'd love to hear from you! Whether you have a question, a project idea, or just want to say hello, feel free to drop me a message using the form below."
+            subheading: "Have a project or role in mind? Send me a message."
         },
     },
     ro: {
