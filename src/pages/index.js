@@ -75,7 +75,7 @@ export default function Home() {
                                 className="!text-3xl md:!text-5xl lg:!text-5xl xl:!text-6xl"
                             />
                             <p className="my-4 text-xs font-medium indent-10 text-justify sm:text-sm md:text-base">
-                                {t.intro}
+                                I build the software that runs businesses. <strong>Multi-tenant SaaS platforms</strong>, <strong>data pipelines</strong> processing millions of records, <strong>AI integrations</strong> that ship to real users. Currently the founder of <strong>RepUp AI</strong> and senior engineer at <strong>Papilio</strong>, serving 1,000+ users across Switzerland and Germany.
                             </p>
                             <div className="flex items-center self-center mt-2 lg:self-start">
                                 <Link
