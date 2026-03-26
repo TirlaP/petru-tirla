@@ -2,15 +2,20 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { availabilityData } from '@/src/components/data/conversion/AvailabilityData';
+import { useLanguage } from '@/src/context/LanguageContext';
+import { translations, t as tl } from '@/src/components/data/Translations';
 
 const LimitedAvailabilityBanner = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  
+  const { language } = useLanguage();
+  const t = translations[language].limitedBanner;
+
   // Only show the banner if availability status is "Limited Availability"
-  const shouldShow = availabilityData.status === "Limited Availability";
-  
+  const statusEn = availabilityData.status.en || availabilityData.status;
+  const shouldShow = statusEn === "Limited Availability";
+
   // Check scroll position and screen size on client-side only
   useEffect(() => {
     const handleScroll = () => {
@@ -20,18 +25,18 @@ const LimitedAvailabilityBanner = () => {
         setIsScrolled(false);
       }
     };
-    
+
     setIsMobile(window.innerWidth < 768);
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   // If not limited availability or banner was dismissed, don't show it
   if (!shouldShow || !isVisible) {
     return null;
   }
-  
+
   return (
     <AnimatePresence>
       {/* Only show when not scrolled down or on mobile (sticky at top) */}
@@ -47,20 +52,20 @@ const LimitedAvailabilityBanner = () => {
             <div className="flex items-center animate-scroll">
               {[...Array(3)].map((_, i) => (
                 <div key={i} className="flex items-center mx-4 whitespace-nowrap">
-                  <span className="mr-2">⚡</span>
-                  <span className="font-medium">Limited availability for new projects until {availabilityData.nextAvailable}</span>
-                  <span className="mx-4">•</span>
-                  <Link 
+                  <span className="mr-2">&#9889;</span>
+                  <span className="font-medium">{t.limitedAvailability} {tl(availabilityData.nextAvailable, language)}</span>
+                  <span className="mx-4">&bull;</span>
+                  <Link
                     href="/contact"
                     className="underline hover:font-bold transition-all"
                   >
-                    Schedule a call now to secure your spot
+                    {t.scheduleCall}
                   </Link>
                 </div>
               ))}
             </div>
           </div>
-          
+
           {/* Close button */}
           <button
             className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white p-1 rounded-full hover:bg-white/20 transition-colors"

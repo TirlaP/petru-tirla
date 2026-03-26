@@ -1,10 +1,18 @@
 import { availabilityData } from '@/src/components/data/conversion/AvailabilityData';
 import Link from 'next/link';
+import { useLanguage } from '@/src/context/LanguageContext';
+import { translations, t as tl } from '@/src/components/data/Translations';
 
 const AvailabilityIndicator = ({ compact = false }) => {
-  const { status, nextAvailable, responseTime, workingHours, timeZone } = availabilityData;
+  const { language } = useLanguage();
+  const ta = translations[language].availability;
+  const status = tl(availabilityData.status, language);
+  const nextAvailable = tl(availabilityData.nextAvailable, language);
+  const responseTime = tl(availabilityData.responseTime, language);
+  const { workingHours } = availabilityData;
+  const timeZone = tl(availabilityData.timeZone, language);
 
-  const isAvailable = status === 'Available';
+  const isAvailable = (availabilityData.status.en || availabilityData.status) === 'Available';
   const dotColor = isAvailable ? 'bg-green-500' : 'bg-yellow-500';
   const textColor = isAvailable ? 'text-green-600 dark:text-green-400' : 'text-yellow-600 dark:text-yellow-400';
 
@@ -25,9 +33,9 @@ const AvailabilityIndicator = ({ compact = false }) => {
       </div>
 
       <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-        <p>Start date: <strong className="text-dark dark:text-light">{nextAvailable}</strong></p>
-        <p>Response time: <strong className="text-dark dark:text-light">{responseTime}</strong></p>
-        <p>Hours: <strong className="text-dark dark:text-light">{workingHours}</strong> <span>({timeZone})</span></p>
+        <p>{ta.startDate} <strong className="text-dark dark:text-light">{nextAvailable}</strong></p>
+        <p>{ta.responseTime} <strong className="text-dark dark:text-light">{responseTime}</strong></p>
+        <p>{ta.hours} <strong className="text-dark dark:text-light">{workingHours}</strong> <span>({timeZone})</span></p>
       </div>
     </div>
   );

@@ -44,7 +44,7 @@ const Details = ({ position, company, companyLink, time, address, work }) => {
 
     const displayWork = (work) => {
         return work.split(". ").filter(d => d.trim()).map((description, index) => (
-            <li key={index} className="list-disc ms-9">
+            <li key={index} className="list-disc ms-4">
                 {renderBold(description.endsWith('.') ? description : description + '.')}
             </li>
         ));
@@ -75,7 +75,7 @@ const Details = ({ position, company, companyLink, time, address, work }) => {
                 <span className="capitalize font-medium text-dark/75 dark:text-light/75 xs:text-sm">
                     {time} | {address}
                 </span>
-                <div className="text-justify font-medium text-md w-full md:text-sm">
+                <div className="font-medium text-md w-full md:text-sm">
                     <ul>{displayWork(work)}</ul>
                 </div>
             </motion.div>

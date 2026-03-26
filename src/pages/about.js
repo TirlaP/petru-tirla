@@ -59,6 +59,38 @@ const collaborationNumber = (collaboration) => {
     return collaboration.length;
 };
 
+const AboutBio = ({ language, years }) => {
+    if (language === 'ro') {
+        return (
+            <>
+                <p className="text-justify font-medium indent-10">
+                    Construiesc <strong>platforme multi-tenant</strong>, <strong>pipeline-uri de date</strong> și <strong>integrări AI</strong> pentru clienți enterprise din Europa și Orientul Mijlociu. Am construit și administrez propriul produs SaaS cu <strong>20+ clienți plătitori</strong>.
+                </p>
+                <p className="text-justify font-medium indent-10 my-4">
+                    Am livrat <strong>6+ sisteme de producție</strong> în {years} ani. <strong>RepUp AI</strong> procesează înregistrări de apeluri prin analiză AI și sincronizează rezultatele în 6 CRM-uri. <strong>Papilio</strong> servește 1.000+ utilizatori la companii precum ABB, Siemens și Swiss Re. Proiectul <strong>Maritime</strong> rulează pe PC-urile de bord ale navelor din Marea Caspică, fără internet.
+                </p>
+                <p className="text-justify font-medium indent-10">
+                    <strong>TypeScript</strong> peste tot. <strong>React</strong> pe frontend, <strong>NestJS</strong> și <strong>Hono</strong> pe backend, <strong>PostgreSQL</strong> cu row-level security pentru multi-tenancy. Am implementat izolarea tenant-ilor de 4 ori până acum.
+                </p>
+            </>
+        );
+    }
+    // Default: EN (also used for FR, IT)
+    return (
+        <>
+            <p className="text-justify font-medium indent-10">
+                I build <strong>multi-tenant platforms</strong>, <strong>data pipelines</strong>, and <strong>AI integrations</strong> for enterprise clients across Europe and the Middle East. I also built and run my own SaaS product with <strong>20+ paying clients</strong>.
+            </p>
+            <p className="text-justify font-medium indent-10 my-4">
+                I&apos;ve shipped <strong>6+ production systems</strong> in {years} years. <strong>RepUp AI</strong> processes call recordings through AI analysis and syncs results across 6 CRMs. <strong>Papilio</strong> serves 1,000+ users at companies like ABB, Siemens, and Swiss Re. The <strong>Maritime</strong> project runs on vessel bridge PCs in the Caspian Sea with no internet.
+            </p>
+            <p className="text-justify font-medium indent-10">
+                <strong>TypeScript</strong> across everything. <strong>React</strong> on the frontend, <strong>NestJS</strong> and <strong>Hono</strong> on the backend, <strong>PostgreSQL</strong> with row-level security for multi-tenancy. I&apos;ve implemented tenant isolation 4 times now.
+            </p>
+        </>
+    );
+};
+
 const About = () => {
     const { language } = useLanguage();
     const t = translations[language].about;
@@ -83,15 +115,7 @@ const About = () => {
                             <h2 className="mb-4 text-lg font-bold uppercase text-dark/75 dark:text-light/75">
                                 {t.heading}
                             </h2>
-                            <p className="text-justify font-medium indent-10">
-                                I build <strong>multi-tenant platforms</strong>, <strong>data pipelines</strong>, and <strong>AI integrations</strong> for enterprise clients across Europe and the Middle East. I also built and run my own SaaS product with <strong>20+ paying clients</strong>.
-                            </p>
-                            <p className="text-justify font-medium indent-10 my-4">
-                                I've shipped <strong>6+ production systems</strong> in {experienceYears()} years. <strong>RepUp AI</strong> processes call recordings through AI analysis and syncs results across 6 CRMs. <strong>Papilio</strong> serves 1,000+ users at companies like ABB, Siemens, and Swiss Re. The <strong>Maritime</strong> project runs on vessel bridge PCs in the Caspian Sea with no internet.
-                            </p>
-                            <p className="text-justify font-medium indent-10">
-                                <strong>TypeScript</strong> across everything. <strong>React</strong> on the frontend, <strong>NestJS</strong> and <strong>Hono</strong> on the backend, <strong>PostgreSQL</strong> with row-level security for multi-tenancy. I've implemented tenant isolation 4 times now.
-                            </p>
+                            <AboutBio language={language} years={experienceYears()} />
                         </div>
                         <div className="relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-8 dark:bg-dark dark:border-light order-1 lg:col-span-4 lg:order-2">
                             <div className="absolute top-0 -right-3 -z-10 w-[102%] h-[102%] rounded-[2rem] bg-dark dark:bg-light" />

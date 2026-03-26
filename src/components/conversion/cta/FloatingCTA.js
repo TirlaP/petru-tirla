@@ -2,11 +2,15 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { FiMessageCircle, FiX, FiArrowUp } from 'react-icons/fi';
+import { useLanguage } from '@/src/context/LanguageContext';
+import { translations } from '@/src/components/data/Translations';
 
 const FloatingCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  
+  const { language } = useLanguage();
+  const t = translations[language].floatingCTA;
+
   useEffect(() => {
     const handleScroll = () => {
       // Show floating CTA after scrolling down 300px
@@ -18,19 +22,19 @@ const FloatingCTA = () => {
         setIsExpanded(false);
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded);
   };
-  
+
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-  
+
   return (
     <AnimatePresence>
       {isVisible && (
@@ -50,7 +54,7 @@ const FloatingCTA = () => {
           >
             <FiArrowUp />
           </motion.button>
-          
+
           {/* CTA Button */}
           <div className="relative">
             <AnimatePresence>
@@ -63,35 +67,35 @@ const FloatingCTA = () => {
                   transition={{ duration: 0.2 }}
                 >
                   <div className="text-center mb-4">
-                    <h3 className="font-bold text-primary dark:text-primaryDark">Need help with a project?</h3>
+                    <h3 className="font-bold text-primary dark:text-primaryDark">{t.heading}</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                      I&apos;m available for new opportunities. Let&apos;s talk!
+                      {t.subheading}
                     </p>
                   </div>
                   <div className="space-y-2">
-                    <Link 
+                    <Link
                       href="/contact"
                       className="block w-full py-2 text-center bg-primary dark:bg-primaryDark text-white rounded-lg font-medium hover:bg-primary/90 dark:hover:bg-primaryDark/90 transition-colors"
                     >
-                      Contact Me
+                      {t.contactMe}
                     </Link>
-                    <a 
-                      href="https://calendly.com/petru-tirla/30min" 
-                      target="_blank" 
+                    <a
+                      href="https://calendly.com/petru-tirla/30min"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="block w-full py-2 text-center bg-transparent text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border border-gray-300 dark:border-gray-600"
                     >
-                      Schedule a Call
+                      {t.scheduleCall}
                     </a>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
-            
+
             <motion.button
               className={`w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-colors ${
-                isExpanded 
-                  ? 'bg-gray-700 dark:bg-gray-700 text-white' 
+                isExpanded
+                  ? 'bg-gray-700 dark:bg-gray-700 text-white'
                   : 'bg-primary dark:bg-primaryDark text-white'
               }`}
               onClick={toggleExpanded}

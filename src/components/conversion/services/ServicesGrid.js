@@ -4,10 +4,14 @@ import ServiceCard from './ServiceCard';
 import { services } from '@/src/components/data/conversion/ServicesData';
 import { ctaData } from '@/src/components/data/conversion/CTAData';
 import EnhancedCTA from '../cta/EnhancedCTA';
+import { useLanguage } from '@/src/context/LanguageContext';
+import { translations } from '@/src/components/data/Translations';
 
 const ServicesGrid = () => {
   const [hoveredService, setHoveredService] = useState(null);
-  
+  const { language } = useLanguage();
+  const t = translations[language].services;
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -17,7 +21,7 @@ const ServicesGrid = () => {
       }
     }
   };
-  
+
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
@@ -28,23 +32,23 @@ const ServicesGrid = () => {
       }
     }
   };
-  
+
   return (
     <section className="services-section py-16 w-full">
       <div className="max-w-screen-sm mx-auto px-4 sm:container sm:mx-auto sm:px-4 md:px-6">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold text-primary dark:text-primaryDark mb-3 md:text-4xl">My Services</h2>
+          <h2 className="text-3xl font-bold text-primary dark:text-primaryDark mb-3 md:text-4xl">{t.heading}</h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-base">
-            I provide comprehensive development solutions tailored to your specific needs. Each service is delivered with a focus on quality, performance, and value.
+            {t.subheading}
           </p>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6"
           variants={containerVariants}
           initial="hidden"
@@ -62,10 +66,10 @@ const ServicesGrid = () => {
             </motion.div>
           ))}
         </motion.div>
-        
+
         <div className="mt-10 md:mt-16">
-          <EnhancedCTA 
-            variant={ctaData.variants.find(v => v.id === 'services')} 
+          <EnhancedCTA
+            variant={ctaData.variants.find(v => v.id === 'services')}
             primaryCTA={ctaData.primary}
             secondaryCTA={ctaData.availability}
           />

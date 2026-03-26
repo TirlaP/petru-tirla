@@ -10,8 +10,10 @@ import {
     FiUploadCloud,
     FiLifeBuoy,
 } from "react-icons/fi";
+import { useLanguage } from "@/src/context/LanguageContext";
+import { translations, t as tl } from "@/src/components/data/Translations";
 
-const WorkProcessStep = ({ step, isActive, onClick }) => {
+const WorkProcessStep = ({ step, isActive, onClick, language }) => {
     const { id, title, icon, timeline } = step;
 
     // Map icon names to components
@@ -53,7 +55,7 @@ const WorkProcessStep = ({ step, isActive, onClick }) => {
             >
                 <div
                     className={`
-          w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-full flex items-center justify-center 
+          w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-full flex items-center justify-center
           ${
               isActive
                   ? "bg-primary dark:bg-primaryDark text-white"
@@ -73,10 +75,10 @@ const WorkProcessStep = ({ step, isActive, onClick }) => {
                                 : "text-dark dark:text-light"
                         }`}
                     >
-                        {title}
+                        {tl(title, language)}
                     </h4>
                     <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">
-                        {timeline}
+                        {tl(timeline, language)}
                     </p>
                 </div>
             </motion.button>
@@ -100,6 +102,8 @@ const scrollbarHideCSS = `
 const WorkProcessVisualization = () => {
     const [activeStep, setActiveStep] = useState(1);
     const { steps } = workProcessData;
+    const { language } = useLanguage();
+    const t = translations[language].workProcess;
 
     const handleStepClick = (stepId) => {
         setActiveStep(stepId);
@@ -118,11 +122,10 @@ const WorkProcessVisualization = () => {
                     className="text-center mb-8 md:mb-12"
                 >
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary dark:text-primaryDark mb-2 md:mb-4">
-                        My Work Process
+                        {t.heading}
                     </h2>
                     <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                        A transparent, collaborative approach from initial consultation to ongoing
-                        support.
+                        {t.subheading}
                     </p>
                 </motion.div>
 
@@ -145,6 +148,7 @@ const WorkProcessVisualization = () => {
                                         step={step}
                                         isActive={activeStep === step.id}
                                         onClick={handleStepClick}
+                                        language={language}
                                     />
                                 </div>
                             ))}
@@ -164,17 +168,17 @@ const WorkProcessVisualization = () => {
                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
                                 <div className="lg:col-span-2">
                                     <h3 className="text-xl md:text-2xl font-bold text-primary dark:text-primaryDark mb-2 md:mb-4">
-                                        {activeStepData.id}. {activeStepData.title}
+                                        {activeStepData.id}. {tl(activeStepData.title, language)}
                                     </h3>
                                     <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 mb-4 md:mb-6">
-                                        {activeStepData.description}
+                                        {tl(activeStepData.description, language)}
                                     </p>
 
                                     <h4 className="text-base md:text-lg font-semibold text-dark dark:text-light mb-1 md:mb-2">
-                                        What to expect:
+                                        {t.whatToExpect}
                                     </h4>
                                     <ul className="list-disc list-inside text-sm md:text-base text-gray-700 dark:text-gray-300 space-y-1 md:space-y-2 ml-1 md:ml-2">
-                                        {activeStepData.deliverables.split(",").map((item, i) => (
+                                        {tl(activeStepData.deliverables, language).split(",").map((item, i) => (
                                             <li key={i}>{item.trim()}</li>
                                         ))}
                                     </ul>
@@ -182,25 +186,25 @@ const WorkProcessVisualization = () => {
 
                                 <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4 md:p-6">
                                     <h4 className="text-base md:text-lg font-semibold text-dark dark:text-light mb-3 md:mb-4">
-                                        Details
+                                        {t.details}
                                     </h4>
 
                                     <div className="space-y-3 md:space-y-4">
                                         <div>
                                             <h5 className="text-xs md:text-sm uppercase text-gray-500 dark:text-gray-400 font-medium mb-1">
-                                                Estimated Timeline
+                                                {t.estimatedTimeline}
                                             </h5>
                                             <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 font-medium">
-                                                {activeStepData.timeline}
+                                                {tl(activeStepData.timeline, language)}
                                             </p>
                                         </div>
 
                                         <div>
                                             <h5 className="text-xs md:text-sm uppercase text-gray-500 dark:text-gray-400 font-medium mb-1">
-                                                Your Involvement
+                                                {t.yourInvolvement}
                                             </h5>
                                             <p className="text-sm md:text-base text-gray-700 dark:text-gray-300">
-                                                {activeStepData.clientInvolvement}
+                                                {tl(activeStepData.clientInvolvement, language)}
                                             </p>
                                         </div>
                                     </div>

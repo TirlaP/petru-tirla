@@ -3,8 +3,13 @@ import CaseStudyCard from "./CaseStudyCard";
 import { caseStudies } from "@/src/components/data/conversion/CaseStudiesData";
 import { ctaData } from "@/src/components/data/conversion/CTAData";
 import EnhancedCTA from "../cta/EnhancedCTA";
+import { useLanguage } from "@/src/context/LanguageContext";
+import { translations } from "@/src/components/data/Translations";
 
 const CaseStudiesGrid = () => {
+    const { language } = useLanguage();
+    const t = translations[language].caseStudies;
+
     return (
         <section className="case-studies-section py-16">
             <div className="max-w-screen-sm mx-auto px-4 sm:container sm:mx-auto sm:px-4">
@@ -15,11 +20,10 @@ const CaseStudiesGrid = () => {
                     className="text-center mb-12"
                 >
                     <h2 className="text-4xl font-bold text-primary dark:text-primaryDark mb-4">
-                        Case Studies
+                        {t.heading}
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                        Explore detailed examples of how I&apos;ve helped clients solve complex problems
-                        and achieve measurable results.
+                        {t.subheading}
                     </p>
                 </motion.div>
 

@@ -12,13 +12,15 @@ import { caseStudies } from '@/src/components/data/conversion/CaseStudiesData';
 import EnhancedCTA from '@/src/components/conversion/cta/EnhancedCTA';
 import { ctaData } from '@/src/components/data/conversion/CTAData';
 import FloatingCTA from '@/src/components/conversion/cta/FloatingCTA';
+import { useLanguage } from '@/src/context/LanguageContext';
+import { translations } from '@/src/components/data/Translations';
 
 // For navigation between case studies
-const PrevNextButtons = ({ currentId }) => {
+const PrevNextButtons = ({ currentId, t }) => {
   const currentIndex = caseStudies.findIndex(cs => cs.id === currentId);
   const prevCase = currentIndex > 0 ? caseStudies[currentIndex - 1] : null;
   const nextCase = currentIndex < caseStudies.length - 1 ? caseStudies[currentIndex + 1] : null;
-  
+
   return (
     <div className="flex justify-between mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
       {prevCase ? (
@@ -27,15 +29,15 @@ const PrevNextButtons = ({ currentId }) => {
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            <span>Previous: {prevCase.title}</span>
+            <span>{t.previous} {prevCase.title}</span>
           </div>
         </Link>
       ) : <div></div>}
-      
+
       {nextCase ? (
         <Link href={`/case-studies/${nextCase.id}`}>
           <div className="flex items-center text-primary dark:text-primaryDark hover:underline">
-            <span>Next: {nextCase.title}</span>
+            <span>{t.next} {nextCase.title}</span>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
@@ -48,7 +50,7 @@ const PrevNextButtons = ({ currentId }) => {
 
 const MetricCard = ({ metric }) => {
   const { label, value, improvement } = metric;
-  
+
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 border border-gray-200 dark:border-gray-700">
       <div className="text-2xl font-bold text-primary dark:text-primaryDark">{value}</div>
@@ -60,11 +62,11 @@ const MetricCard = ({ metric }) => {
   );
 };
 
-const TableOfContents = ({ sections, activeSection, setActiveSection }) => {
+const TableOfContents = ({ sections, activeSection, setActiveSection, t }) => {
   return (
     <nav className="toc hidden lg:block sticky top-8 w-64 flex-shrink-0">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 border border-gray-200 dark:border-gray-700">
-        <h3 className="text-lg font-bold text-dark dark:text-light mb-4">Table of Contents</h3>
+        <h3 className="text-lg font-bold text-dark dark:text-light mb-4">{t.tableOfContents}</h3>
         <ul className="space-y-2">
           {sections.map((section) => (
             <li key={section.id}>
@@ -94,16 +96,18 @@ const CaseStudyDetail = () => {
   const { id } = router.query;
   const [caseStudy, setCaseStudy] = useState(null);
   const [activeSection, setActiveSection] = useState('overview');
-  
-  // Sections for table of contents - wrapped in useMemo to prevent recreating the array on each render
+  const { language } = useLanguage();
+  const t = translations[language].caseStudyDetail;
+
+  // Sections for table of contents
   const sections = React.useMemo(() => [
-    { id: 'overview', title: 'Overview' },
-    { id: 'challenge', title: 'The Challenge' },
-    { id: 'approach', title: 'Our Approach' },
-    { id: 'solution', title: 'The Solution' },
-    { id: 'results', title: 'Results & Impact' }
-  ], []);
-  
+    { id: 'overview', title: t.overview },
+    { id: 'challenge', title: t.theChallenge },
+    { id: 'approach', title: t.ourApproach },
+    { id: 'solution', title: t.theSolution },
+    { id: 'results', title: t.resultsAndImpact }
+  ], [t]);
+
   useEffect(() => {
     if (id) {
       const study = caseStudies.find(cs => cs.id === id);
@@ -114,18 +118,17 @@ const CaseStudyDetail = () => {
       }
     }
   }, [id, router]);
-  
+
   // Handle scroll to update active section
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 100; // Add offset
-      
-      // Find the section that is currently in view
+      const scrollPosition = window.scrollY + 100;
+
       for (const section of sections) {
         const element = document.getElementById(section.id);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          
+
           if (
             scrollPosition >= offsetTop &&
             scrollPosition < offsetTop + offsetHeight
@@ -136,11 +139,11 @@ const CaseStudyDetail = () => {
         }
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [sections]);
-  
+
   if (!caseStudy) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -148,21 +151,21 @@ const CaseStudyDetail = () => {
       </div>
     );
   }
-  
-  const { 
-    title, 
-    subtitle, 
-    clientIndustry, 
-    timeline, 
-    teamSize, 
-    technologies, 
-    challenge, 
-    approach, 
-    solution, 
-    results, 
-    images 
+
+  const {
+    title,
+    subtitle,
+    clientIndustry,
+    timeline,
+    teamSize,
+    technologies,
+    challenge,
+    approach,
+    solution,
+    results,
+    images
   } = caseStudy;
-  
+
   return (
     <>
       <Head>
@@ -179,7 +182,7 @@ const CaseStudyDetail = () => {
             className="mb-4 lg:!text-5xl sm:!text-4xl xs:!text-3xl"
           />
           <h2 className="text-xl text-gray-600 dark:text-gray-400 mb-12">{subtitle}</h2>
-          
+
           <div className="flex lg:flex-col">
             {/* Main content */}
             <div className="flex-grow lg:w-full">
@@ -201,29 +204,29 @@ const CaseStudyDetail = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Project details */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                 <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
-                  <h3 className="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium mb-2">Timeline</h3>
+                  <h3 className="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium mb-2">{t.timeline}</h3>
                   <p className="font-bold text-dark dark:text-light">{timeline}</p>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
-                  <h3 className="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium mb-2">Team Size</h3>
+                  <h3 className="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium mb-2">{t.teamSize}</h3>
                   <p className="font-bold text-dark dark:text-light">{teamSize}</p>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
-                  <h3 className="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium mb-2">Industry</h3>
+                  <h3 className="text-sm uppercase text-gray-500 dark:text-gray-400 font-medium mb-2">{t.industry}</h3>
                   <p className="font-bold text-dark dark:text-light">{clientIndustry}</p>
                 </div>
               </div>
-              
+
               {/* Technologies */}
               <div className="mb-12" id="overview">
-                <h2 className="text-2xl font-bold text-primary dark:text-primaryDark mb-4">Technologies Used</h2>
+                <h2 className="text-2xl font-bold text-primary dark:text-primaryDark mb-4">{t.technologiesUsed}</h2>
                 <div className="flex flex-wrap gap-2">
                   {technologies.map((tech, index) => (
-                    <span 
+                    <span
                       key={index}
                       className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm"
                     >
@@ -232,10 +235,10 @@ const CaseStudyDetail = () => {
                   ))}
                 </div>
               </div>
-              
+
               {/* Challenge */}
               <div className="mb-12" id="challenge">
-                <h2 className="text-2xl font-bold text-primary dark:text-primaryDark mb-4">The Challenge</h2>
+                <h2 className="text-2xl font-bold text-primary dark:text-primaryDark mb-4">{t.theChallenge}</h2>
                 <div className="prose dark:prose-invert max-w-none">
                   {challenge.split('\n\n').map((paragraph, i) => (
                     <p key={i} className="mb-4 text-gray-700 dark:text-gray-300">
@@ -244,10 +247,10 @@ const CaseStudyDetail = () => {
                   ))}
                 </div>
               </div>
-              
+
               {/* Approach */}
               <div className="mb-12" id="approach">
-                <h2 className="text-2xl font-bold text-primary dark:text-primaryDark mb-4">Our Approach</h2>
+                <h2 className="text-2xl font-bold text-primary dark:text-primaryDark mb-4">{t.ourApproach}</h2>
                 <div className="prose dark:prose-invert max-w-none">
                   {approach.split('\n\n').map((paragraph, i) => (
                     <p key={i} className="mb-4 text-gray-700 dark:text-gray-300">
@@ -255,16 +258,16 @@ const CaseStudyDetail = () => {
                     </p>
                   ))}
                 </div>
-                
+
                 {/* Before/After comparison if images exist */}
                 {images.before && images.after && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                     <div>
-                      <h3 className="text-lg font-medium text-dark dark:text-light mb-2">Before</h3>
+                      <h3 className="text-lg font-medium text-dark dark:text-light mb-2">{t.before}</h3>
                       <div className="relative h-64 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
                         <Image
                           src={images.before}
-                          alt="Before implementation"
+                          alt={t.before}
                           fill
                           className="object-cover"
                           sizes="(max-width: 768px) 100vw, 50vw"
@@ -272,11 +275,11 @@ const CaseStudyDetail = () => {
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-lg font-medium text-dark dark:text-light mb-2">After</h3>
+                      <h3 className="text-lg font-medium text-dark dark:text-light mb-2">{t.after}</h3>
                       <div className="relative h-64 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
                         <Image
                           src={images.after}
-                          alt="After implementation"
+                          alt={t.after}
                           fill
                           className="object-cover"
                           sizes="(max-width: 768px) 100vw, 50vw"
@@ -286,10 +289,10 @@ const CaseStudyDetail = () => {
                   </div>
                 )}
               </div>
-              
+
               {/* Solution */}
               <div className="mb-12" id="solution">
-                <h2 className="text-2xl font-bold text-primary dark:text-primaryDark mb-4">The Solution</h2>
+                <h2 className="text-2xl font-bold text-primary dark:text-primaryDark mb-4">{t.theSolution}</h2>
                 <div className="prose dark:prose-invert max-w-none">
                   {solution.split('\n\n').map((paragraph, i) => (
                     <p key={i} className="mb-4 text-gray-700 dark:text-gray-300">
@@ -298,18 +301,18 @@ const CaseStudyDetail = () => {
                   ))}
                 </div>
               </div>
-              
+
               {/* Results */}
               <div className="mb-12" id="results">
-                <h2 className="text-2xl font-bold text-primary dark:text-primaryDark mb-4">Results & Impact</h2>
-                
+                <h2 className="text-2xl font-bold text-primary dark:text-primaryDark mb-4">{t.resultsAndImpact}</h2>
+
                 {/* Metrics grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                   {results.metrics.map((metric, index) => (
                     <MetricCard key={index} metric={metric} />
                   ))}
                 </div>
-                
+
                 {/* Testimonial */}
                 {results.testimonial && (
                 <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6 border-l-4 border-primary dark:border-primaryDark mb-8">
@@ -325,31 +328,32 @@ const CaseStudyDetail = () => {
                 </div>
                 )}
               </div>
-              
+
               {/* Enhanced CTA */}
               <div className="mb-8">
-                <EnhancedCTA 
-                  variant={ctaData.variants.find(v => v.id === 'case-studies')} 
+                <EnhancedCTA
+                  variant={ctaData.variants.find(v => v.id === 'case-studies')}
                   primaryCTA={ctaData.primary}
                   secondaryCTA={ctaData.tertiary}
                 />
               </div>
-              
+
               {/* Navigation between case studies */}
-              <PrevNextButtons currentId={id} />
+              <PrevNextButtons currentId={id} t={t} />
             </div>
-            
+
             {/* Table of Contents */}
             <div className="ml-8 lg:ml-0 lg:mt-8">
-              <TableOfContents 
-                sections={sections} 
+              <TableOfContents
+                sections={sections}
                 activeSection={activeSection}
                 setActiveSection={setActiveSection}
+                t={t}
               />
             </div>
           </div>
         </Layout>
-        
+
         {/* Floating CTA */}
         <FloatingCTA />
       </main>
@@ -364,7 +368,7 @@ export async function getStaticPaths() {
   const paths = caseStudies.map(caseStudy => ({
     params: { id: caseStudy.id }
   }));
-  
+
   return {
     paths,
     fallback: false
@@ -374,13 +378,13 @@ export async function getStaticPaths() {
 // Pre-fetch data for each case study
 export async function getStaticProps({ params }) {
   const caseStudy = caseStudies.find(cs => cs.id === params.id);
-  
+
   if (!caseStudy) {
     return {
       notFound: true
     };
   }
-  
+
   return {
     props: {
       caseStudy

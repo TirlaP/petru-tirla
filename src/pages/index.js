@@ -19,6 +19,22 @@ import ServicesGrid from "@/src/components/conversion/services/ServicesGrid";
 import WorkProcessVisualization from "@/src/components/conversion/workProcess/WorkProcessVisualization";
 import FloatingCTA from "@/src/components/conversion/cta/FloatingCTA";
 
+const HeroBio = ({ language }) => {
+    if (language === 'ro') {
+        return (
+            <p className="my-4 text-base font-medium">
+                Construiesc software-ul care pune afacerile în mișcare. <strong>Platforme SaaS multi-tenant</strong>, <strong>pipeline-uri de date</strong> care procesează milioane de înregistrări, <strong>integrări AI</strong> livrate utilizatorilor reali. În prezent, fondator <strong>RepUp AI</strong> și senior engineer la <strong>Papilio</strong>, servind 1.000+ utilizatori în Elveția și Germania.
+            </p>
+        );
+    }
+    // Default: EN (also used for FR, IT since those haven't been translated with bold markup)
+    return (
+        <p className="my-4 text-base font-medium">
+            I build the software that runs businesses. <strong>Multi-tenant SaaS platforms</strong>, <strong>data pipelines</strong> processing millions of records, <strong>AI integrations</strong> that ship to real users. Currently the founder of <strong>RepUp AI</strong> and senior engineer at <strong>Papilio</strong>, serving 1,000+ users across Switzerland and Germany.
+        </p>
+    );
+};
+
 export default function Home() {
     const router = useRouter();
     const { language } = useLanguage();
@@ -74,9 +90,7 @@ export default function Home() {
                                 text={t.greeting}
                                 className="!text-3xl md:!text-5xl lg:!text-5xl xl:!text-6xl"
                             />
-                            <p className="my-4 text-xs font-medium indent-10 text-justify sm:text-sm md:text-base">
-                                I build the software that runs businesses. <strong>Multi-tenant SaaS platforms</strong>, <strong>data pipelines</strong> processing millions of records, <strong>AI integrations</strong> that ship to real users. Currently the founder of <strong>RepUp AI</strong> and senior engineer at <strong>Papilio</strong>, serving 1,000+ users across Switzerland and Germany.
-                            </p>
+                            <HeroBio language={language} />
                             <div className="flex items-center self-center mt-2 lg:self-start">
                                 <Link
                                     href="/CV_Petru_Tirla.pdf"
@@ -90,7 +104,7 @@ export default function Home() {
                                     href="/contact"
                                     className="relative group ml-4 text-base font-medium capitalize text-dark dark:text-light md:text-lg"
                                 >
-                                    Contact
+                                    {t.contact}
                                     <span
                                         className={`h-[2px] inline-block bg-dark dark:bg-light absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
                                             router.asPath === "/contact" ? "w-full" : "w-0"

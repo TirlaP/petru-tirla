@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FiArrowRight, FiCalendar, FiClock, FiMessageCircle, FiBriefcase } from "react-icons/fi";
+import { useLanguage } from "@/src/context/LanguageContext";
+import { t as tl } from "@/src/components/data/Translations";
 
-const CTAButton = ({ cta }) => {
+const CTAButton = ({ cta, language }) => {
     const { text, link, type, icon, isExternal = false } = cta;
+    const resolvedText = tl(text, language);
 
     // Determine icon component
     const getIcon = () => {
@@ -43,7 +46,7 @@ const CTAButton = ({ cta }) => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
         >
-            {text}
+            {resolvedText}
             {getIcon()}
         </motion.div>
     );
@@ -60,6 +63,7 @@ const CTAButton = ({ cta }) => {
 };
 
 const EnhancedCTA = ({ variant, primaryCTA, secondaryCTA = null, fullWidth = false }) => {
+    const { language } = useLanguage();
     const { heading, subheading } = variant;
 
     return (
@@ -71,16 +75,16 @@ const EnhancedCTA = ({ variant, primaryCTA, secondaryCTA = null, fullWidth = fal
             <div className="flex flex-col items-start justify-between md:flex-row">
                 <div className="mb-4 max-w-xl md:mr-6 md:mb-0">
                     <h3 className="text-xl font-bold text-dark dark:text-light mb-1 md:text-2xl md:mb-2">
-                        {heading}
+                        {tl(heading, language)}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base">
-                        {subheading}
+                        {tl(subheading, language)}
                     </p>
                 </div>
 
                 <div className="flex flex-col space-y-2 w-full md:flex-row md:space-y-0 md:space-x-3 md:w-auto">
-                    <CTAButton cta={primaryCTA} />
-                    {secondaryCTA && <CTAButton cta={secondaryCTA} />}
+                    <CTAButton cta={primaryCTA} language={language} />
+                    {secondaryCTA && <CTAButton cta={secondaryCTA} language={language} />}
                 </div>
             </div>
         </div>

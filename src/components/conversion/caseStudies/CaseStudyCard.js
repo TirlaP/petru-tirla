@@ -1,15 +1,19 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLanguage } from '@/src/context/LanguageContext';
+import { translations } from '@/src/components/data/Translations';
 
 const CaseStudyCard = ({ caseStudy, index }) => {
   const { id, title, subtitle, clientIndustry, technologies, images, challenge, results } = caseStudy;
-  
+  const { language } = useLanguage();
+  const t = translations[language].caseStudyDetail;
+
   // Alternate layout based on index for visual interest
   const isEven = index % 2 === 0;
-  
+
   return (
-    <motion.div 
+    <motion.div
       className="case-study-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 mb-12"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -33,18 +37,18 @@ const CaseStudyCard = ({ caseStudy, index }) => {
             </div>
           </div>
         </div>
-        
+
         <div className="w-full lg:w-1/2 p-6 lg:p-8">
           <h3 className="text-xl md:text-2xl font-bold text-primary dark:text-primaryDark mb-2">{title}</h3>
           <p className="text-gray-600 dark:text-gray-400 mb-4">{subtitle}</p>
-          
+
           <div className="mb-4">
-            <h4 className="text-sm text-gray-500 dark:text-gray-400 uppercase font-medium mb-2">The Challenge</h4>
+            <h4 className="text-sm text-gray-500 dark:text-gray-400 uppercase font-medium mb-2">{t.theChallenge}</h4>
             <p className="text-gray-700 dark:text-gray-300 overflow-hidden max-h-[4.5rem]">{challenge}</p>
           </div>
-          
+
           <div className="mb-4">
-            <h4 className="text-sm text-gray-500 dark:text-gray-400 uppercase font-medium mb-2">Key Results</h4>
+            <h4 className="text-sm text-gray-500 dark:text-gray-400 uppercase font-medium mb-2">{t.keyResults}</h4>
             <div className="grid grid-cols-2 gap-4">
               {results.metrics.slice(0, 2).map((metric, i) => (
                 <div key={i} className="text-center p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
@@ -54,11 +58,11 @@ const CaseStudyCard = ({ caseStudy, index }) => {
               ))}
             </div>
           </div>
-          
+
           <div className="flex flex-wrap gap-2 mb-5">
             {technologies.slice(0, 5).map((tech, i) => (
-              <span 
-                key={i} 
+              <span
+                key={i}
                 className="text-xs py-1 px-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md"
               >
                 {tech}
@@ -73,14 +77,14 @@ const CaseStudyCard = ({ caseStudy, index }) => {
               </span>
             )}
           </div>
-          
+
           <Link href={`/case-studies/${id}`}>
             <motion.button
               className="w-full py-2 px-4 text-center bg-primary dark:bg-primaryDark text-white rounded-lg font-medium hover:bg-primary/90 dark:hover:bg-primaryDark/90 transition-colors"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              View Case Study
+              {t.viewCaseStudy}
             </motion.button>
           </Link>
         </div>

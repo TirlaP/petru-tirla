@@ -1,19 +1,21 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '@/src/context/LanguageContext';
+import { translations } from '@/src/components/data/Translations';
 
-const InputField = ({ 
-  label, 
-  name, 
-  value, 
-  onChange, 
-  type = 'text', 
-  error, 
+const InputField = ({
+  label,
+  name,
+  value,
+  onChange,
+  type = 'text',
+  error,
   required = false,
-  ...props 
+  ...props
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const isOccupied = value.length > 0;
-  
+
   return (
     <div className="mb-4 md:mb-5 relative">
       <div className="relative">
@@ -50,21 +52,21 @@ const InputField = ({
             {...props}
           />
         )}
-        
-        <label 
+
+        <label
           htmlFor={name}
           className={`absolute text-xs md:text-sm left-3 transition-all duration-200 pointer-events-none
-                   ${(isFocused || isOccupied) 
-                     ? 'transform -translate-y-5 md:-translate-y-6 bg-light dark:bg-dark px-1 text-primary dark:text-primaryDark text-xs' 
+                   ${(isFocused || isOccupied)
+                     ? 'transform -translate-y-5 md:-translate-y-6 bg-light dark:bg-dark px-1 text-primary dark:text-primaryDark text-xs'
                      : 'top-2 md:top-3 text-gray-500 dark:text-gray-400'}`}
         >
           {label} {required && <span className="text-red-500">*</span>}
         </label>
       </div>
-      
+
       <AnimatePresence>
         {error && (
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -79,6 +81,9 @@ const InputField = ({
 };
 
 const ContactForm = () => {
+  const { language } = useLanguage();
+  const t = translations[language].contactForm;
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -89,23 +94,23 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [formStep, setFormStep] = useState(0);
-  
+
   // Reset errors when form data changes
   useEffect(() => {
     const newErrors = { ...errors };
-    
+
     if (formData.name && newErrors.name) {
       delete newErrors.name;
     }
-    
+
     if (formData.email && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email) && newErrors.email) {
       delete newErrors.email;
     }
-    
+
     if (formData.message && newErrors.message) {
       delete newErrors.message;
     }
-    
+
     if (Object.keys(newErrors).length !== Object.keys(errors).length) {
       setErrors(newErrors);
     }
@@ -113,21 +118,21 @@ const ContactForm = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = t.nameRequired;
     }
-    
+
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = t.emailRequired;
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)) {
-      newErrors.email = 'Invalid email address';
+      newErrors.email = t.invalidEmail;
     }
-    
+
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = t.messageRequired;
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -145,13 +150,13 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
-    
+
     setIsSubmitting(true);
-    
+
     // When using a form service like FormSubmit.co, we'll let the form
     // submit naturally, but we'll show a success state after a short delay
     setTimeout(() => {
@@ -164,29 +169,29 @@ const ContactForm = () => {
       });
       setIsSubmitting(false);
     }, 1000);
-    
+
     // Submit the form programmatically
     e.target.submit();
   };
-  
+
   const nextStep = () => {
     if (formStep === 0) {
       if (!formData.name.trim()) {
-        setErrors({ ...errors, name: 'Name is required' });
+        setErrors({ ...errors, name: t.nameRequired });
         return;
       }
       if (!formData.email.trim()) {
-        setErrors({ ...errors, email: 'Email is required' });
+        setErrors({ ...errors, email: t.emailRequired });
         return;
       } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)) {
-        setErrors({ ...errors, email: 'Invalid email address' });
+        setErrors({ ...errors, email: t.invalidEmail });
         return;
       }
     }
-    
+
     setFormStep(current => current + 1);
   };
-  
+
   const prevStep = () => {
     setFormStep(current => current - 1);
   };
@@ -197,7 +202,7 @@ const ContactForm = () => {
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: -50 }
   };
-  
+
   // Progress indicator
   const progressWidth = formStep === 0 ? "w-1/2" : "w-full";
 
@@ -214,9 +219,9 @@ const ContactForm = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-xl md:text-2xl font-bold text-dark dark:text-light mb-2">Message Sent!</h3>
+        <h3 className="text-xl md:text-2xl font-bold text-dark dark:text-light mb-2">{t.messageSent}</h3>
         <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-4 md:mb-6">
-          Thank you for reaching out. I&apos;ll get back to you as soon as possible.
+          {t.thankYou}
         </p>
         <motion.button
           whileHover={{ scale: 1.05 }}
@@ -224,7 +229,7 @@ const ContactForm = () => {
           onClick={() => setSubmitStatus(null)}
           className="bg-primary dark:bg-primaryDark text-light px-4 py-2 rounded-lg text-sm md:text-base font-medium"
         >
-          Send Another Message
+          {t.sendAnother}
         </motion.button>
       </motion.div>
     );
@@ -240,7 +245,7 @@ const ContactForm = () => {
       {/* Progress bar */}
       <div className="mb-6">
         <div className="h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-          <motion.div 
+          <motion.div
             className={`h-full bg-primary dark:bg-primaryDark`}
             initial={{ width: "0%" }}
             animate={{ width: progressWidth }}
@@ -248,12 +253,12 @@ const ContactForm = () => {
           />
         </div>
         <div className="flex justify-between mt-1 text-xs text-gray-500 dark:text-gray-400">
-          <span className={formStep >= 0 ? "font-medium text-primary dark:text-primaryDark" : ""}>Personal Info</span>
-          <span className={formStep >= 1 ? "font-medium text-primary dark:text-primaryDark" : ""}>Your Message</span>
+          <span className={formStep >= 0 ? "font-medium text-primary dark:text-primaryDark" : ""}>{t.personalInfo}</span>
+          <span className={formStep >= 1 ? "font-medium text-primary dark:text-primaryDark" : ""}>{t.yourMessage}</span>
         </div>
       </div>
-      
-      <form 
+
+      <form
         onSubmit={handleSubmit}
         action={formAction}
         method="POST"
@@ -264,12 +269,12 @@ const ContactForm = () => {
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.href : ''} />
         <input type="hidden" name="_template" value="table" />
-        
+
         {/* Anti-spam honeypot field */}
         <div className="hidden">
           <input type="text" name="_honey" />
         </div>
-        
+
         <AnimatePresence mode="wait">
           {formStep === 0 && (
             <motion.div
@@ -280,19 +285,19 @@ const ContactForm = () => {
               exit="exit"
               transition={{ duration: 0.3 }}
             >
-              <h3 className="text-lg md:text-xl font-bold text-dark dark:text-light mb-4">Tell me about yourself</h3>
-              
+              <h3 className="text-lg md:text-xl font-bold text-dark dark:text-light mb-4">{t.tellMeAboutYourself}</h3>
+
               <InputField
-                label="Name"
+                label={t.name}
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 error={errors.name}
                 required
               />
-              
+
               <InputField
-                label="Email"
+                label={t.email}
                 name="email"
                 type="email"
                 value={formData.email}
@@ -300,7 +305,7 @@ const ContactForm = () => {
                 error={errors.email}
                 required
               />
-              
+
               <div className="flex justify-end">
                 <motion.button
                   type="button"
@@ -309,7 +314,7 @@ const ContactForm = () => {
                   whileTap={{ scale: 0.97 }}
                   className="bg-primary text-light py-1.5 px-4 md:py-2 md:px-5 rounded-lg text-sm md:text-base font-medium flex items-center"
                 >
-                  Next
+                  {t.next}
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -317,7 +322,7 @@ const ContactForm = () => {
               </div>
             </motion.div>
           )}
-          
+
           {formStep === 1 && (
             <motion.div
               key="step2"
@@ -327,17 +332,17 @@ const ContactForm = () => {
               exit="exit"
               transition={{ duration: 0.3 }}
             >
-              <h3 className="text-lg md:text-xl font-bold text-dark dark:text-light mb-4">Your Message</h3>
-              
+              <h3 className="text-lg md:text-xl font-bold text-dark dark:text-light mb-4">{t.yourMessage}</h3>
+
               <InputField
-                label="Subject"
+                label={t.subject}
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
               />
-              
+
               <InputField
-                label="Message"
+                label={t.message}
                 name="message"
                 type="textarea"
                 value={formData.message}
@@ -345,7 +350,7 @@ const ContactForm = () => {
                 error={errors.message}
                 required
               />
-              
+
               <div className="flex justify-between">
                 <motion.button
                   type="button"
@@ -357,9 +362,9 @@ const ContactForm = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
-                  Back
+                  {t.back}
                 </motion.button>
-                
+
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
@@ -373,9 +378,9 @@ const ContactForm = () => {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                      Sending...
+                      {t.sending}
                     </>
-                  ) : 'Send Message'}
+                  ) : t.sendMessage}
                 </motion.button>
               </div>
             </motion.div>
