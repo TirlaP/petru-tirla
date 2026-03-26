@@ -16,8 +16,6 @@ import FilterablePortfolio from "@/src/components/conversion/portfolioFilters/Fi
 import CaseStudiesGrid from "@/src/components/conversion/caseStudies/CaseStudiesGrid";
 import TechProficiencyVisualization from "@/src/components/conversion/techProficiency/TechProficiencyVisualization";
 import FloatingCTA from "@/src/components/conversion/cta/FloatingCTA";
-import EnhancedCTA from "@/src/components/conversion/cta/EnhancedCTA";
-import { ctaData } from "@/src/components/data/conversion/CTAData";
 
 const DisplayProjects = () => {
     const { language } = useLanguage();
@@ -218,15 +216,6 @@ const Projects = () => {
                     {/* Case Studies Section */}
                     <div className="mt-16 mb-10 md:mt-24 lg:mt-32 md:mb-20">
                         <CaseStudiesGrid />
-                    </div>
-                    
-                    {/* Enhanced CTA */}
-                    <div className="mt-10 md:mt-16 lg:mt-20">
-                        <EnhancedCTA 
-                            variant={ctaData.variants.find(v => v.id === 'projects')} 
-                            primaryCTA={ctaData.primary}
-                            secondaryCTA={ctaData.tertiary}
-                        />
                     </div>
                     
                     {/* Original Project Grid (hidden) */}

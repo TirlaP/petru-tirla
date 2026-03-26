@@ -65,7 +65,10 @@ const CaseStudyCard = ({ caseStudy, index }) => {
               </span>
             ))}
             {technologies.length > 5 && (
-              <span className="text-xs py-1 px-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">
+              <span
+                className="text-xs py-1 px-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md cursor-default"
+                title={technologies.slice(5).join(', ')}
+              >
                 +{technologies.length - 5} more
               </span>
             )}

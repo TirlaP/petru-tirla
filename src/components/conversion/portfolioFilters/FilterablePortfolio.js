@@ -55,12 +55,15 @@ const ProjectCard = ({ project, viewMode }) => {
                 </span>
               ))}
               {technologies.length > 3 && (
-                <span className="text-xs py-1 px-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">
+                <span
+                  className="text-xs py-1 px-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md cursor-default"
+                  title={technologies.slice(3).map(t => t.startsWith('#') ? t.substring(1) : t).join(', ')}
+                >
                   +{technologies.length - 3} more
                 </span>
               )}
             </div>
-            
+
             <div className="flex space-x-4">
               <a 
                 href={live_demo_url} 
@@ -126,7 +129,10 @@ const ProjectCard = ({ project, viewMode }) => {
             </span>
           ))}
           {technologies.length > 3 && (
-            <span className="text-xs py-1 px-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">
+            <span
+              className="text-xs py-1 px-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md cursor-default"
+              title={technologies.slice(3).map(t => t.startsWith('#') ? t.substring(1) : t).join(', ')}
+            >
               +{technologies.length - 3}
             </span>
           )}

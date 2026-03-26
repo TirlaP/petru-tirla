@@ -13,7 +13,7 @@ export const projects = {
                 it: "",
             },
             company: "RepUp AI",
-            companyLink: "#",
+            companyLink: "https://repup.ai",
             address: "Remote, London",
             work: {
                 en: "Built a revenue intelligence platform for B2B sales teams. **20+ paying clients**, **200+ active users**, Stripe credit-based billing. Integrated **6 CRM providers (HubSpot, Salesforce, Pipedrive, Zoho, ActiveCampaign, Dynamics 365)** with bilateral sync: reads, writes, and webhook ingestion. Engineered a call intelligence pipeline: **AssemblyAI** transcription, **OpenAI**-driven analysis, and automated CRM projection of summaries, action items, and deal risk signals. **NestJS**, **BullMQ**, **Supabase** with row-level security.",
@@ -33,7 +33,7 @@ export const projects = {
                 it: "",
             },
             company: "Papilio Talent Solutions AG",
-            companyLink: "#",
+            companyLink: "https://worxps.com",
             address: "Remote, Switzerland",
             work: {
                 en: "Building the digital talent assessment and feedback platform for Papilio Talent Solutions (Zurich), serving **500+ companies** and **1,000+ users** across Switzerland, Germany, and Europe. Collaborating with a team of 5 including CTO and Product Owner. Developed a comprehensive assessment platform with **70+ feature modules** for HR admins and assessors - evaluation cycles, competency models, observation sheets, reporting. Built a standalone **360-degree feedback system** with anonymous external rater access via token-based links. Implemented **SCIM** user provisioning for **Azure AD** and **Google Workspace**, SOAP integration with **AON MapTalent**, and Active Directory sync. **React 19**, **Hono** on **Cloudflare Workers**, **Supabase** with row-level security, 4-language internationalization.",
