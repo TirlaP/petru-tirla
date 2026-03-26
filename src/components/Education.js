@@ -11,13 +11,14 @@ const EducationDetails = ({ education }) => {
             key={educationFact.name}
             name={educationFact.name}
             company={educationFact.company}
+            companyLink={educationFact.companyLink}
             year={educationFact.year}
             place={educationFact.address}
         />
     ));
 };
 
-const Details = ({ name, company, year, place }) => {
+const Details = ({ name, company, companyLink, year, place }) => {
     const ref = useRef(null);
     return (
         <li
@@ -33,9 +34,15 @@ const Details = ({ name, company, year, place }) => {
                 <h3 className="capitalize font-bold text-2xl sm:text-xl xs:text-lg">{name}</h3>
                 <span className="capitalize font-medium text-dark/75 dark:text-light/75 xs:text-sm">
                     {year} |{" "}
-                    <span className="uppercase font-bold text-primary dark:text-primaryDark">
-                        {company}
-                    </span>{" "}
+                    {companyLink && companyLink !== "#" ? (
+                        <a href={companyLink} target="_blank" rel="noopener noreferrer" className="uppercase font-bold text-primary dark:text-primaryDark hover:underline">
+                            {company}
+                        </a>
+                    ) : (
+                        <span className="uppercase font-bold text-primary dark:text-primaryDark">
+                            {company}
+                        </span>
+                    )}{" "}
                     - {place}
                 </span>
             </motion.div>

@@ -97,9 +97,6 @@ const FilterBar = ({ activeFilters, setActiveFilters, totalProjects, filteredCou
           )}
         </button>
         
-        <div className="text-sm text-gray-600 dark:text-gray-400">
-          Showing <span className="font-medium text-dark dark:text-light">{filteredCount}</span> of {totalProjects} projects
-        </div>
       </div>
       
       <AnimatePresence>
