@@ -22,10 +22,19 @@ const CollabDetails = ({ collaborations }) => {
 
 const Details = ({ position, company, companyLink, time, address, work }) => {
     const ref = useRef(null);
+    const renderBold = (text) => {
+        const parts = text.split(/(\*\*[^*]+\*\*)/g);
+        return parts.map((part, i) =>
+            part.startsWith('**') && part.endsWith('**')
+                ? <strong key={i}>{part.slice(2, -2)}</strong>
+                : part
+        );
+    };
+
     const displayWork = (work) => {
-        return work.split(". ").map((description, index) => (
+        return work.split(". ").filter(d => d.trim()).map((description, index) => (
             <li key={index} className="list-disc ms-9">
-                {description}
+                {renderBold(description.endsWith('.') ? description : description + '.')}
             </li>
         ));
     };

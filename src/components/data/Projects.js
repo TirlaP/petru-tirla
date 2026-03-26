@@ -16,7 +16,7 @@ export const projects = {
             companyLink: "#",
             address: "Remote, London",
             work: {
-                en: "Built a revenue intelligence platform for B2B sales teams. 20+ paying clients, 200+ active users, Stripe credit-based billing. Integrated 6 CRM providers (HubSpot, Salesforce, Pipedrive, Zoho, ActiveCampaign, Dynamics 365) with bilateral sync: reads, writes, and webhook ingestion. Engineered a call intelligence pipeline: AssemblyAI transcription, OpenAI-driven analysis, and automated CRM projection of summaries, action items, and deal risk signals. NestJS, BullMQ, Supabase with row-level security.",
+                en: "Built a revenue intelligence platform for B2B sales teams. **20+ paying clients**, **200+ active users**, Stripe credit-based billing. Integrated **6 CRM providers (HubSpot, Salesforce, Pipedrive, Zoho, ActiveCampaign, Dynamics 365)** with bilateral sync: reads, writes, and webhook ingestion. Engineered a call intelligence pipeline: **AssemblyAI** transcription, **OpenAI**-driven analysis, and automated CRM projection of summaries, action items, and deal risk signals. **NestJS**, **BullMQ**, **Supabase** with row-level security.",
                 ro: "",
                 fr: "",
                 it: "",
@@ -36,7 +36,7 @@ export const projects = {
             companyLink: "#",
             address: "Remote, Switzerland",
             work: {
-                en: "Building the digital talent assessment and feedback platform for Papilio Talent Solutions (Zurich), serving 500+ companies and 1,000+ users across Switzerland, Germany, and Europe. Collaborating with a team of 5 including CTO and Product Owner. Developed a comprehensive assessment platform with 70+ feature modules for HR admins and assessors - evaluation cycles, competency models, observation sheets, reporting. Built a standalone 360-degree feedback system with anonymous external rater access via token-based links. Implemented SCIM user provisioning for Azure AD and Google Workspace, SOAP integration with AON MapTalent, and Active Directory sync. React 19, Hono on Cloudflare Workers, Supabase with row-level security, 4-language internationalization.",
+                en: "Building the digital talent assessment and feedback platform for Papilio Talent Solutions (Zurich), serving **500+ companies** and **1,000+ users** across Switzerland, Germany, and Europe. Collaborating with a team of 5 including CTO and Product Owner. Developed a comprehensive assessment platform with **70+ feature modules** for HR admins and assessors - evaluation cycles, competency models, observation sheets, reporting. Built a standalone **360-degree feedback system** with anonymous external rater access via token-based links. Implemented **SCIM** user provisioning for **Azure AD** and **Google Workspace**, SOAP integration with **AON MapTalent**, and Active Directory sync. **React 19**, **Hono** on **Cloudflare Workers**, **Supabase** with row-level security, 4-language internationalization.",
                 ro: "",
                 fr: "",
                 it: "",
@@ -56,7 +56,7 @@ export const projects = {
             companyLink: "#",
             address: "Remote, Turkmenistan",
             work: {
-                en: "Built an enterprise logistics platform for Dragon Oil (Turkmenistan), digitizing marine dispatch, manifest signing, and vessel tracking for an air-gapped, offline-capable environment. 4 React frontends, an Electron desktop client for vessel bridge PCs, PostGIS geospatial tracking, 96 database models, and a voyage optimization engine. 18+ RBAC roles, bilingual EN/RU.",
+                en: "Built an enterprise logistics platform for **Dragon Oil** (Turkmenistan), digitizing marine dispatch, manifest signing, and vessel tracking for an **air-gapped, offline-capable** environment. **4 React frontends**, an **Electron** desktop client for vessel bridge PCs, **PostGIS** geospatial tracking, **96 database models**, and a voyage optimization engine. **18+ RBAC roles**, bilingual EN/RU.",
                 ro: "",
                 fr: "",
                 it: "",
@@ -76,27 +76,7 @@ export const projects = {
             companyLink: "#",
             address: "Bucharest, Romania",
             work: {
-                en: "Led frontend for a dental practice management system serving clinics across Norway, Iceland, and Sweden.",
-                ro: "",
-                fr: "",
-                it: "",
-            },
-        },
-        {
-            name: "Shopify Integrations",
-            time: "06/2024 - 12/2024",
-            projects: ["Supplier Adapters", "Inventory Sync", "GraphQL API Integration"],
-            position: {
-                en: "Full-Stack Engineer",
-                ro: "",
-                fr: "",
-                it: "",
-            },
-            company: "ZEPHYR Web Studios",
-            companyLink: "#",
-            address: "Remote, Romania",
-            work: {
-                en: "6 supplier adapters syncing inventory via Shopify GraphQL API with real-time WebSocket updates, cron scheduling, and rate-limited bulk operations.",
+                en: "Led frontend for a dental practice management system serving clinics across **Norway**, **Iceland**, and **Sweden**.",
                 ro: "",
                 fr: "",
                 it: "",
@@ -140,7 +120,7 @@ export const projects = {
             companyLink: "https://assist-software.net/",
             address: "Suceava, Romania",
             work: {
-                en: "Improved e-commerce platform performance from 30% to 80% by implementing SSR with Next.js and optimizing Node.js data pipelines. Built a shared component library in Storybook adopted across 5+ teams and projects. Migrated an HR platform from React 16 to 18, refactoring state management from Redux Thunk to modern patterns.",
+                en: "Improved e-commerce platform performance from **30% to 80%** by implementing SSR with **Next.js** and optimizing **Node.js** data pipelines. Built a shared component library in **Storybook** adopted across **5+ teams** and projects. Migrated an HR platform from **React 16 to 18**, refactoring state management from **Redux Thunk** to modern patterns and updating **Styled Components** across the application.",
                 ro: "",
                 fr: "",
                 it: "",
@@ -160,7 +140,7 @@ export const projects = {
             companyLink: "https://www.pentalog.com/",
             address: "Remote, Romania",
             work: {
-                en: "Built a full-stack admin dashboard with data visualization using Node.js and Firebase.",
+                en: "Built a full-stack admin dashboard with data visualization using **Node.js** and **Firebase**.",
                 ro: "",
                 fr: "",
                 it: "",
