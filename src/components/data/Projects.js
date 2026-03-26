@@ -3,6 +3,26 @@ import AiFrontDesk from "./../../img/AiFrontDesk.webp";
 export const projects = {
     collaborations: [
         {
+            name: "ZEPHYR Web Studios",
+            time: "01/2023 - Present",
+            projects: ["AiFrontDesk", "Maritime Fleet Management", "Enterprise Web Applications", "SaaS Products"],
+            position: {
+                en: "Full-Stack Engineer - Founder",
+                ro: "",
+                fr: "",
+                it: "",
+            },
+            company: "ZEPHYR Web Studios",
+            companyLink: "#",
+            address: "Remote, Romania",
+            work: {
+                en: "*Built and shipped SaaS products and enterprise platforms for clients across Switzerland, Scandinavia, and the Middle East.*",
+                ro: "",
+                fr: "",
+                it: "",
+            },
+        },
+        {
             name: "RepUp AI",
             time: "01/2026 - Present",
             projects: ["Revenue Intelligence Platform", "6 CRM Integrations", "AI Call Analysis Pipeline"],
@@ -77,26 +97,6 @@ export const projects = {
             address: "Bucharest, Romania",
             work: {
                 en: "Led frontend for a dental practice management system serving clinics across **Norway**, **Iceland**, and **Sweden**.",
-                ro: "",
-                fr: "",
-                it: "",
-            },
-        },
-        {
-            name: "ZEPHYR Web Studios",
-            time: "01/2023 - Present",
-            projects: ["AiFrontDesk", "Maritime Fleet Management", "Enterprise Web Applications", "SaaS Products"],
-            position: {
-                en: "Full-Stack Engineer - Founder",
-                ro: "",
-                fr: "",
-                it: "",
-            },
-            company: "ZEPHYR Web Studios",
-            companyLink: "#",
-            address: "Remote, Romania",
-            work: {
-                en: "Built and shipped SaaS products and enterprise platforms for clients across Switzerland, Scandinavia, and the Middle East.",
                 ro: "",
                 fr: "",
                 it: "",
