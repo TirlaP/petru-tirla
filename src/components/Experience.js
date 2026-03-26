@@ -22,14 +22,22 @@ const CollabDetails = ({ collaborations }) => {
 
 const Details = ({ position, company, companyLink, time, address, work }) => {
     const ref = useRef(null);
-    const renderBold = (text) => {
-        const parts = text.split(/(\*\*[^*]+\*\*)/g);
-        return parts.map((part, i) =>
-            part.startsWith('**') && part.endsWith('**')
-                ? <strong key={i}>{part.slice(2, -2)}</strong>
-                : part
-        );
+    const renderFormatted = (text) => {
+        // Split on **bold** and [link](url) patterns
+        const parts = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
+        return parts.map((part, i) => {
+            if (part.startsWith('**') && part.endsWith('**')) {
+                return <strong key={i}>{part.slice(2, -2)}</strong>;
+            }
+            const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+            if (linkMatch) {
+                return <a key={i} href={linkMatch[2]} target="_blank" rel="noopener noreferrer" className="text-primary dark:text-primaryDark hover:underline">{linkMatch[1]}</a>;
+            }
+            return part;
+        });
     };
+
+    const renderBold = renderFormatted;
 
     const displayWork = (work) => {
         return work.split(". ").filter(d => d.trim()).map((description, index) => (

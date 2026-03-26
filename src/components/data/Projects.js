@@ -33,10 +33,10 @@ export const projects = {
                 it: "",
             },
             company: "Papilio Talent Solutions AG",
-            companyLink: "https://worxps.com",
+            companyLink: "https://papilio.ch/",
             address: "Remote, Switzerland",
             work: {
-                en: "Building the digital talent assessment and feedback platform for Papilio Talent Solutions (Zurich), serving **500+ companies** and **1,000+ users** across Switzerland, Germany, and Europe. Collaborating with a team of 5 including CTO and Product Owner. Developed a comprehensive assessment platform with **70+ feature modules** for HR admins and assessors - evaluation cycles, competency models, observation sheets, reporting. Built a standalone **360-degree feedback system** with anonymous external rater access via token-based links. Implemented **SCIM** user provisioning for **Azure AD** and **Google Workspace**, SOAP integration with **AON MapTalent**, and Active Directory sync. **React 19**, **Hono** on **Cloudflare Workers**, **Supabase** with row-level security, 4-language internationalization.",
+                en: "Building the digital talent assessment and feedback platform for Papilio Talent Solutions (Zurich), serving **500+ companies** and **1,000+ users** across Switzerland, Germany, and Europe. Collaborating with a team of 5 including CTO and Product Owner. Developed a comprehensive assessment platform with **70+ feature modules** for HR admins and assessors - evaluation cycles, competency models, observation sheets, reporting. Built a standalone [360-degree feedback system](https://www.worxps.com/) with anonymous external rater access via token-based links. Implemented **SCIM** user provisioning for **Azure AD** and **Google Workspace**, SOAP integration with **AON MapTalent**, and Active Directory sync. **React 19**, **Hono** on **Cloudflare Workers**, **Supabase** with row-level security, 4-language internationalization.",
                 ro: "",
                 fr: "",
                 it: "",
@@ -53,7 +53,7 @@ export const projects = {
                 it: "",
             },
             company: "Dragon Oil (via ZEPHYR Web Studios)",
-            companyLink: "#",
+            companyLink: "https://www.dragonoil.com/",
             address: "Remote, Turkmenistan",
             work: {
                 en: "Built an enterprise logistics platform for **Dragon Oil** (Turkmenistan), digitizing marine dispatch, manifest signing, and vessel tracking for an **air-gapped, offline-capable** environment. **4 React frontends**, an **Electron** desktop client for vessel bridge PCs, **PostGIS** geospatial tracking, **96 database models**, and a voyage optimization engine. **18+ RBAC roles**, bilingual EN/RU.",
@@ -73,7 +73,7 @@ export const projects = {
                 it: "",
             },
             company: "ITHG AI",
-            companyLink: "#",
+            companyLink: "https://ithg.ai/",
             address: "Bucharest, Romania",
             work: {
                 en: "Led frontend for a dental practice management system serving clinics across **Norway**, **Iceland**, and **Sweden**.",
@@ -137,7 +137,7 @@ export const projects = {
                 it: "",
             },
             company: "Pentalog",
-            companyLink: "https://www.pentalog.com/",
+            companyLink: "https://www.globant.com/",
             address: "Remote, Romania",
             work: {
                 en: "Built a full-stack admin dashboard with data visualization using **Node.js** and **Firebase**.",
