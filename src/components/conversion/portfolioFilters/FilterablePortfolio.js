@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import FilterBar from './FilterBar';
 import { projects } from '@/src/components/data/Projects';
 import { projectFiltersMap } from '@/src/components/data/conversion/PortfolioFiltersData';
-import { FiGrid, FiList, FiShare2 } from 'react-icons/fi';
+import { FiGrid, FiList } from 'react-icons/fi';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -255,6 +255,10 @@ const FilterablePortfolio = () => {
       />
       
       <div className="flex justify-between items-center mb-6">
+        <span className="text-sm text-gray-600 dark:text-gray-400">
+          Showing <span className="font-medium text-dark dark:text-light">{filteredProjects.length}</span> of {allProjects.length} projects
+        </span>
+
         <div className="text-sm font-medium flex space-x-2">
           <button
             onClick={() => setViewMode('grid')}
@@ -267,7 +271,7 @@ const FilterablePortfolio = () => {
             <FiGrid className="mr-1" />
             <span>Grid</span>
           </button>
-          
+
           <button
             onClick={() => setViewMode('list')}
             className={`flex items-center space-x-1 px-3 py-1 rounded-md ${
@@ -278,21 +282,6 @@ const FilterablePortfolio = () => {
           >
             <FiList className="mr-1" />
             <span>List</span>
-          </button>
-        </div>
-        
-        <div className="flex items-center">
-          <span className="mr-2 text-sm text-gray-600 dark:text-gray-400">
-            Showing <span className="font-medium text-dark dark:text-light">{filteredProjects.length}</span> of {allProjects.length} projects
-          </span>
-          
-          <button
-            onClick={shareFilterSelection}
-            className="flex items-center text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 disabled:opacity-50"
-            disabled={Object.keys(activeFilters).length === 0}
-          >
-            <FiShare2 className="mr-1" />
-            <span>Share Filters</span>
           </button>
         </div>
       </div>

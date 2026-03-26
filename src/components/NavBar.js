@@ -12,15 +12,20 @@ import Logo from "./Logo";
 // Import availability indicator component
 import AvailabilityIndicator from "./conversion/availability/AvailabilityIndicator";
 
+const isActive = (asPath, href) => {
+    const normalize = (p) => p.replace(/\/+$/, '') || '/';
+    return normalize(asPath) === normalize(href);
+};
+
 const CustomLink = ({ href, title, className = "" }) => {
     const router = useRouter();
     return (
         <Link href={href} className={`${className} relative group`}>
             {title}
             <span
-                className={`h-[2px] inline-block bg-dark absolute left-0 -bottom-1 
+                className={`h-[2px] inline-block bg-dark absolute left-0 -bottom-1
             group-hover:w-full transition-[width] ease duration-300
-            ${router.asPath === href ? "w-full" : "w-0"} dark:bg-light
+            ${isActive(router.asPath, href) ? "w-full" : "w-0"} dark:bg-light
             `}
             >
                 &nbsp;
@@ -45,9 +50,9 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
         >
             {title}
             <span
-                className={`h-[2px] inline-block bg-light absolute left-0 -bottom-1 
+                className={`h-[2px] inline-block bg-light absolute left-0 -bottom-1
             group-hover:w-full transition-[width] ease duration-300
-            ${router.asPath === href ? "w-full" : "w-0"} dark:bg-dark
+            ${isActive(router.asPath, href) ? "w-full" : "w-0"} dark:bg-dark
             `}
             >
                 &nbsp;

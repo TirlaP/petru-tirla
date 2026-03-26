@@ -64,8 +64,8 @@ export const translations = {
         home: {
             title: "Petru Tîrlă - Portofoliu Dezvoltator Full-Stack",
             description: "Portofoliul lui Petru Tîrlă, Dezvoltator Full-Stack",
-            greeting: "Salut, sunt Petru Tîrlă",
-            intro: "Sunt un dezvoltator full-stack cu o pasiune pentru crearea de aplicații web inovatoare. Îmi place să explorez noi tehnologii și să le aplic pentru a rezolva probleme din lumea reală. Nu ezitați să explorați proiectele mele și să mă contactați dacă aveți întrebări.",
+            greeting: "Petru Tîrlă",
+            intro: "Construiesc software-ul care pune afacerile în mișcare. Platforme SaaS multi-tenant, pipeline-uri de date care procesează milioane de înregistrări, integrări AI livrate utilizatorilor reali. În prezent, fondator RepUp AI și senior engineer la Papilio, servind 1.000+ utilizatori în Elveția și Germania.",
             cv: "CV",
             contact: "Contact",
         },
@@ -74,10 +74,10 @@ export const translations = {
             description:
                 "Aflați despre experiența profesională și educația lui Petru Tîrlă în dezvoltarea full-stack",
             heading: "Despre Mine",
-            bio: "Sunt un dezvoltator full-stack cu o bază solidă în ingineria calculatoarelor. Pregătirea mea academică m-a înzestrat cu abilități precum rezolvarea problemelor, cercetarea informațiilor și o curiozitate pentru învățare, pe care le-am aplicat cu succes în dezvoltarea web.",
+            bio: "Construiesc platforme multi-tenant, pipeline-uri de date și integrări AI pentru clienți enterprise din Europa și Orientul Mijlociu. Am construit și administrez propriul produs SaaS cu 20+ clienți plătitori.",
             experience:
-                "În ultimii {years} ani, am dobândit competențe tehnice solide și capacitatea de a răspunde rapid și eficient provocărilor. Acest lucru mi-a permis să contribui semnificativ la diverse proiecte. Am lucrat cu tehnologii precum React.js, Next.js, Node.js și am experiență atât cu baze de date SQL, cât și NoSQL.",
-            skills: "Pentru a-mi îmbunătăți versatilitatea și eficiența, am urmat, de asemenea, cursuri suplimentare în tehnologii precum TypeScript și GraphQL. Sunt mereu dornic să învăț și să aplic noi tehnologii. Nu ezitați să explorați diversele mele proiecte!",
+                "Am livrat 6+ sisteme de producție în {years} ani. RepUp AI procesează înregistrări de apeluri prin analiză AI și sincronizează rezultatele în 6 CRM-uri. Papilio servește 1.000+ utilizatori la companii precum ABB, Siemens și Swiss Re. Proiectul Maritime rulează pe PC-urile de bord ale navelor din Marea Caspică, fără internet.",
+            skills: "TypeScript peste tot. React pe frontend, NestJS și Hono pe backend, PostgreSQL cu row-level security pentru multi-tenancy. Am implementat izolarea tenant-ilor de 4 ori până acum.",
             collaborations: "Colaborări",
             projects: "Proiecte",
             yearsOfExperience: "Ani de experiență",
@@ -106,7 +106,7 @@ export const translations = {
             title: "Contactează-l pe Petru Tîrlă",
             description: "Contactează-l pe Petru Tîrlă. Trimite-mi un mesaj și îți voi răspunde cât mai curând posibil.",
             heading: "Contactează-mă",
-            subheading: "Mi-ar plăcea să aud de la tine! Fie că ai o întrebare, o idee de proiect sau doar vrei să mă saluți, nu ezita să-mi lași un mesaj folosind formularul de mai jos."
+            subheading: "Ai un proiect sau un rol în minte? Trimite-mi un mesaj."
         },
     },
     fr: {
